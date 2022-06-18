@@ -1,0 +1,40 @@
+git init
+
+
+ls -ltrha // to see hidden folders
+
+ls -ltrha .git // to see files in .git hidden folder
+
+git status
+
+touch index.html // to create a new file in current folder in linux
+
+git add index.html // to stage a specific file
+
+git add -A // to stage all changed files
+
+git commit -m 'index file created'
+
+git log // show all logs
+
+git diff HEAD // shows the differents from last commit until now (head likes disk head, and points to the last commit where the head of git commits is there)
+
+git diff --staged // shows the differents of staged files
+
+git reset page2.html // removes file from stage
+
+git checkout -- page2.html // unchanges the file to the 'before commit' state
+
+git rm filename
+
+
+
+git branch // show all branches
+
+git branch myBranch // creates a branch (copy from master)
+
+git checkout myBranch // switch to branch myBranch
+
+git merge master // merges myBranch files with master files
+
+git branch -d myBranch // Deletes branch
