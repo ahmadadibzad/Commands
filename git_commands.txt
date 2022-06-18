@@ -46,12 +46,9 @@ git push origin main // push local main branch to github origin branch
 
 git pull origin main // get last version on github to local main branch
 
-<<<<<<< HEAD
+
 git push
 
 git pull
-=======
-git pull
 
 git remote
->>>>>>> 9d84f3f (Remote command added)
