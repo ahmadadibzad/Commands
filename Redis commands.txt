@@ -1,0 +1,79 @@
+sudo service redis-server start
+
+redis-cli ping
+
+help set // set command summary
+
+SET name Ehsan
+GET name
+
+SET lastName "AZ" EX 20 // expires after 20 seconds
+SET lastName "AZ" PX 200 // expires after 200 miliseconds
+
+EXPIRE age 10 // sets expiration time for age
+
+PERSIST age // unset the expiration time of age
+
+SET age 31
+
+GETSET age 98 // --> returns 31 and then set to 98
+
+MSET name "Ehsan jan" age 31
+MGET name age
+
+EXISTS name
+
+APPEND age " years old" // appends new value to the old value
+
+RENAME name firstName
+
+dbsize // gets the number of keys in database
+
+flushall // deletes all of the keys in database
+
+==================================
+=========== List =================
+==================================
+
+// Lists are like simple arrays and it can store duplicated values
+
+rpush cities Tehran Mashhad Rasht Sari // --> Inserts elements from right to the left to a list named cities
+
+lrange cities 0 3 // --> returns all the list elements from index 0 to 3
+
+lrange cities 0 -1 // --> returns all. because we dont't know the size of the list, we could set stop to -1 to show all. -1 means all. -2 means all but the last one. -3 means all but the last two ...
+
+lrange cities 2 4 // --> Rasht Sari
+
+llen cities // Gets the lenght of the list
+
+lpush cities Shiraz // adds Shiraz to the first of the list
+
+lrange cities 0 -1 // => Shiraz Tehran Mashhad Rasht Sari
+
+lpush cities Tabriz Hamadan // First adds Hamadan, and then adds Tabriz to the list
+
+lpop cities // --> removes first element from the list
+
+lpop cities 3 // removes the first three elements from the list
+
+rpop // same as lpop but starts from right
+
+ltrim cities 0 2 // Skips from 0 to 2 index and removes other elements that are outside this range
+
+==============================
+======== Hash ==============
+==============================
+
+// hashes are like PHP [key => value] arrays, or like Hashes in C#, or like objects
+
+HSET / HMSET addr street "My Street" code 14765 // --> addr: { street: "My Street", code: 14765 }
+
+HSET addr [field, value] // sets multiple fields just like HMSET
+
+
+HGET / HMGET addr code [and more fields]
+
+HGETALL addr
+
+HEXISTS addr code
