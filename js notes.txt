@@ -1,0 +1,1121 @@
+objets and arrays are not comparisonable with == and === equal signs!
+
+const person1 = {name: 'Ahmad'}
+
+const person2 = {name: 'Ahmad'}
+
+person1 == person2 // false
+
+person1 === person2 // false
+
+const person3 = person1;
+
+person1 === person3 // true
+
+const arr1 = [1,2];
+
+const arr2 = [1,2];
+
+arr1 === arr2 // false
+
+======================================
+=== New Operators ====================
+======================================
+
+** // means ^
+
+yield
+
+yield*
+
+!! // this operator converts non boolean value to boolean value
+!!'' // false
+!!'ttt' // true
+!!0 // false
+!!1 // true
+!!NaN // false
+!!!NaN // true
+!!undefined // false
+!!null // false
+!!!null // true
+const name = '';
+const isValidName = !!name;
+isValidName // false
+
+||
+const name = someInput || 'Ahmad' // sets Ahmad if not someInput
+
+&&
+const name = isLoggedIn && 'Ahmad' // sets Second value ('Ahmad') if first value is truely, otherwise returns first value (false)
+
+const age = null && 31 // null
+
+=================================
+===== Loops =====================
+=================================
+
+Diffrence between 'for in' and 'for of' loops:
+
+for in is used for objects
+for of is used for arrays
+
+const person = {name: 'Ahmad', age: 31}
+for (const key in person) {console.log(key, ': ', person[key])} // name: 'Ahmad' age: 31
+
+break; // stops the loop
+continue; // skips this step and goes to the next step
+
+break loop_tag // breaks the loop with tag of 'loop_tag'
+continue loop_tag // same as break
+
+loop1: for (......) {
+	loop2: for (.....) {
+		break loop1;
+	}
+}
+
+=========================================
+========= Try Catch =====================
+=========================================
+
+try {
+    try {
+        throw 'e'
+    } catch (error) {
+        console.log('error is: ', error);
+        throw 'e2'
+    }
+} catch (error2) {
+    console.log('error2 is: ', error2);
+}
+
+// error is: e
+// error2 is: e2
+
+
+========================================
+Javascrypt is a version of ecma scrypt.
+
+===============================================
+=========== var VS let ========================
+===============================================
+
+1. With var we can define variables with the same name!
+
+var name = 'Ehsan'
+var name = 'Mitra'
+// No error
+
+let name = 'Ehsan'
+let name = 'Mitra'
+// Error: name is already defined
+
+2. var is global and function scoped. but let is block scoped.
+
+var is global scoped. this means when we define a variable with var in a scope like if statement or loops (but not function or object), it will be available at the outside of the scope.
+
+if (1 === 1) {
+	var name = 'Ehsan';
+	let age = 31;
+}
+
+function myFunc() {
+	console.log(name); // No error
+	console.log(age) // Error: age is not defined
+}
+
+myFunc();
+
+
+
+But if var defines inside of a function, that's behavior would be similar to let.
+
+function myFunc() {
+	var name = 'Ehsan';
+}
+
+console.log(name) // Error: name is not defined
+
+myFunc();
+
+
+3. Hoisting feature:
+Javascript engins and browsers, go over the entire script and register functions and var variables but not let.
+
+console.log(name); // undefined
+
+var name = 'Ehsan';
+
+
+but if define with let:
+
+
+console.log(name); // Error: name is not defined
+
+let name = 'Ehsan';
+
+
+4. With var we can use reserved keywords as variable names! but with let it throws an error:
+
+var undefined = 10;
+console.log(undefined); // 10
+
+let undefined = 10; // Error: undefined is alredy defined!
+console.log(undefined);
+
+note: if we use strict mode, we can't use reserved keywords as variable names either var or let.
+
+
+===============================================
+=========== strict mode =======================
+===============================================
+
+'use strict' disables bad features of javascript and we can write good code:
+
+1. Without strict mode:
+
+name = 'Ehsan' // No Error
+
+use strict:
+
+name = 'Ehsan' // Error
+
+2. Read var vs let - number 4
+
+
+===============================================
+=========== Value types =======================
+===============================================
+
+There are two types of variables in javascript: primitive and referece types.
+
+1. Primitive: string, number, boolean, null, undefined, Nan
+
+let name = 'Ehsan';
+
+let name2 = name;
+
+name = 'Ahmad' //
+name2 // Stil Ehsan
+
+
+
+2. Reference: object, array. When we declare a variable with this type, the pointer address of them in memory is assiged to the variable not the exact value. and when we copy this variable to another variable, only the pointer address copies to that not the value.
+
+let arr1 = [1,2];
+
+let arr2 = arr1;
+
+arr2.push(3)
+
+console.log(arr1) // [1,2,3] :0 :)
+
+let obj1 = { name: 'Ehsan' }
+
+let obj2 = obj1;
+
+obj1.name = 'Ahmad';
+
+console.log(obj2.name) // Ahmad!
+
+obj1 === obj2 // false, because these are pointer address not the same thing!
+
+
+To solve this fucking problem, we can use spread ... operator:
+
+let arr2 = [ ...arr1 ];
+
+let ob2 = { ...obj1 };
+
+
+
+=======================================
+=========== Functioins ================
+=======================================
+
+We can call functions in two ways:
+
+1. Directlye // myFunc();
+2. Indirectly // bind or attach function: btn.addEventListenr('click', myFunc);
+
+We can store a function in a vaiable:
+
+const myFunc = function myFuncName() { ... }
+
+and the anonymous function:
+
+const myFunc = function () { ... }
+
+and arrow function:
+
+const myFunc = () => { ... }
+
+note:
+If we define anonymouse functions, we can't see the name of the function in error message when an error is occured.
+
+There is two ways for define functions:
+
+1. function myfunc() { ... }
+
+in this way, we can define function everywhere and it will initialized.
+
+
+2. const myfunc = function () { ... }
+
+in this way, we can't define it everywhere. we can only define it before it's used. and it does not initialized.
+
+
+Default value of arguments:
+
+if default value is defined, only undefined can be passed to use define value, otherwise default value will not be used, even null and false and 0.
+
+function myFunc(a = 10) { console.log(a) }
+
+myFunc(0) // 0
+
+myFunc(null) // null
+
+myFunc(false) // false
+
+myFunc(undefined) // 10
+
+
+Rest operator:
+
+We can pass multi parameters as a parameter by using Rest ... operator.
+
+function myFunc (p1, ...p2) { 
+	for (const x of p2) { ... }
+}
+
+in this example, p2 uses Rest operator. it looks like spread operator. we can use this way:
+
+myFunc(10, 30, 50, 80); // p1 = 10, p2 = [30, 50, 80]
+
+
+We can pass parameters with spread operator:
+
+const arr = [50, 80]
+myFunc(10, 30, ...arr); // p1 = 10, p2 = [30, 50, 80]
+
+
+note:
+We must define rest parameter as the last parameter.
+
+
+`arguments` keyword:
+
+An alternative to rest operator is arguments keyword:
+
+const myFunc() { 
+	for (const x of arguments) { ... }
+}
+
+and everything we pass to the function is set to arguments.
+
+but rest operator is recommended because it's cleaner.
+
+
+bind
+
+See Season 9, lesson 269 to learn what to do if we have nested this inside of a class and a event listener.
+
+an alternative to use bind method is using arrow function. see season 9, lesson 280.
+
+call
+
+apply
+
+
+
+
+
+========================================================
+================= Array ===============================
+========================================================
+
+`Array-like` objects are objects that have a length property and use indexes to access them. like Array, String, NodeList , ...
+
+
+Define arrays:
+
+1. const arr = [1,2,3];
+
+2. const arr = new Array(1,2,3); const arr2 = new Array('Hi');
+
+If we pass a single numeric parameter to new Array() it will set the size of the array!
+
+const arr = new Array(3) // [Empty * 3]
+
+We can omit the new keyword:
+
+const arr = Array(1,2,3);
+
+
+3. const arr = Array.of(1,2,3);
+
+
+4. const arr = Array.from([1,2,3]);
+
+This function is great for making array from Strings and NodeLists:
+
+const arr = Array.from('Hi!') // ["H", "i", "!"]
+
+const arr = Array.from(document.querySelectorAll('li')) // Creates an array from NodeList
+
+
+
+
+Adding elements to array:
+
+1. push:
+Adds element(s) to the right of array
+
+const arr = ['Hi'];
+arr.push('there'); // ['Hi', 'there']
+
+
+
+2. unshift:
+Adds element(s) to the left of array:
+
+arr.unshift('yooooohooooo') // ['yooooohooooo', 'Hi', 'there']
+
+3. With index of elemet:
+
+arr[6] = 'Ehsan' // ['yooooohooooo', 'Hi', 'there', Empty * 3, 'Ehsan']  (indexex of 3 and 4 and 5 are undefined)
+
+
+4. Using splice method:
+
+const arr = ['str1', 'str2'];
+arr.splice(0, 0, 'myStr'); // ['myStr', 'str1', 'str2']
+
+arr.splice(1, 0, 'Hello'); // ['myStr', 'Hello', 'str1', 'str2']
+
+note:
+the second argument must be 0 so that nothing will be deleted.
+
+
+--------------------------------------------------
+
+Removing elements from array:
+
+1.pop:
+const arr = [1,6,9]
+arr.pop() // [1,6]
+
+2.shift:
+removes element(s) from the left of the array
+
+arr.shift() // [6]
+
+note:
+unshift and shift are slower than push and pop.
+
+
+
+3. Using splice method: arr.splice(index)
+
+const arr = [2,5,7];
+arr.splice(2) [2,5]
+
+const arr = [2,5,7];
+arr.splice(0, 1) // [5,7]
+
+note:
+If we pass only single 0 argument, it will delete all the elements of array!
+
+arr.splice(0) // []
+
+
+note:
+If we pass an negative index, it removes elements starting from the right side of the array
+
+
+const arr = [2,5,7];
+arr.splice(-1) // [2,5]
+
+const arr = [2,5,7];
+arr.splice(-1, 1) // [2,5]
+
+
+----------------------------------------------------
+
+slice:
+
+With this method we can create a real copy of an array (not reference address):
+
+const arr = [1,2];
+
+const arr2 = arr.slice();
+
+arr.push(3); // arr2 is still [1,2]
+
+
+If we pass arguments to slice, we can get a part of an array:
+
+const arr = [1,2,3,4,5];
+
+const sliced = arr.slice(0,2) // [1,2] (from index 0 to index 2, but not index 2 itself)
+
+We can start from negative index, but both start and end params must be negative:
+
+const sliced = arr.slice(-3, -1) // [3,4]
+
+We can pass only one param as start:
+
+const sliced = arr.slice(2) // [3,4,5] (select everything up from index 2 all the way to the end)
+
+
+--------------------------------------------------
+concat:
+We can combine new array to old array:
+
+const arr = [1,2];
+arr.concat([3,4,5]) // [1,2,3,4,5]
+
+
+-------------------------------------------------------
+
+Difference between indexOf and lastIndexOf:
+
+indexOf finds index of first found element statring from left, but lastIndexOf starts from right
+
+
+But these two methods don't work to find reference types like objects. for find index of objects in arrays, we should use findIndex() method.
+
+
+-------------------------------------------
+
+find and findIndex:
+
+Be carefull, these es6 methods return a reference copy of array. so if we change the result array, the original array will changed too.
+
+const arr = [{name: 'Ehsan'}, {name: 'Zahra'}]
+
+const found = arr.find(p => {return name === 'Ehsan'});
+
+found.name = 'Ahmad'; // `Ehsan` in arr will change to `Ahmad` directly.
+
+
+------------------------------------------
+
+Difference of forEach and for of:
+
+In forEach we can easy access to the index, but not in for of loop.
+
+
+----------------------------------------
+map
+
+-----------------------------------------
+sort:
+
+const arr = [10, 3, 5]
+arr.sort() // [10, 3, 5]
+
+By default, sort method converts numbers to string and numbers would not be sorted correctly, for example 10 would be smaller than 3 because 10 in string means 1 0 and 1 is smaller than 3
+for solve this problem, we can pass in an calback function and compare two numbers:
+
+const sorted = arr.sort((a, b) => {
+	if(a > b) {
+		return 1;
+	} else if(a === b) {
+		return 0;
+	} else {
+		return -1;
+	}
+});
+
+
+------------------------------------------
+reverse
+
+
+-------------------------------------------
+filter
+
+
+
+-----------------------------------------
+reduce:
+
+We can use reduce to work with all items of array such as sum of all numeric items.
+
+
+Without reduce:
+
+const arr = [1,5,22]
+let sum = 0; // first value
+arr.forEach(item => {
+	sum += item;
+}) // sum: 28
+
+
+With reduce:
+
+arr.reduce((prev, curr, index) => {
+	return prev + curr
+}, 0) // 0 means prev starts from 0 value
+
+// 28
+
+
+
+
+split
+
+
+
+
+join
+
+We can use join instead of es6 repeat method to repeat a string multiple times:
+
+Array(4).join('foo'); // foofoofoo
+
+------------------------------
+
+Array Destructing:
+
+We can destruct every array elements to specific variables:
+
+const arr = ['Ehsan' , 'Adibzad']
+
+const [ firstName, lastName] = arr; // const firstName = 'Ehsan', const lastName = 'Adibzad'
+
+It's usefull in for loops:
+
+for (const [key, value] of Object.entries()) { // Or Map.entries()
+	...
+}
+
+--------------------------------------------
+
+Spread operator
+
+const arr = [2,4,7]
+
+If we print the array with Spread operator:
+
+console.log(...arr) // 2 4 7
+
+useful for:
+
+1. to copy an array to a new array and not copiying the address of array:
+
+const newArr = [...OldArr];
+
+But if we have array of objects, it's not enought to use spread operator, because if we change one of the object properties in some index of array, the copied array also will be changed! see season 7, episode 222 end of the video.
+
+
+2. to find min and max element in an array, Beacuse the spread operator returns all elements one by one:
+
+const arr = [1,3,9]
+
+Math.max(arr) // NaN
+
+Math.max(...arr) // 9
+
+Because spread operator retuns all of the array elements one by one.
+
+
+3. Usefull in array destructing:
+
+const arr = ['Ehsan', 'Adibzad', 'Male', 31]
+
+const [ firstName, lastName, ...otherInfo] // otherInfo: ['Male', 31]
+
+
+
+-----------------------------
+
+Set
+
+
+
+
+
+-----------------------------
+
+WeakSet
+
+
+
+
+----------------------------
+
+Map
+
+
+
+
+
+-----------------------------
+
+WeakMap
+
+
+
+
+
+=====================================================
+=============== undefined vs null ===================
+=====================================================
+
+let p = null;
+
+the value of null will be asigned to the variable but does not refer to an address point.
+
+let p = undefined;
+
+undefined does not assign any value to a variable.
+
+===========================================
+=============== Objects ===================
+===========================================
+
+
+Delete property:
+
+1. Using delete keyword:
+
+const person: {
+	name: 'Ehsan',
+	age: 31
+}
+
+delete person.age; // age property will be removed from the object and if we try to access that, we will get undefined
+
+
+note:
+If we try to access to a property that doesn't exists or is deleted, we will get undefined but not error.
+
+
+2. assign `undefined` to the property (not recommended):
+
+person.age = undefined
+
+
+
+--------------------------------------
+
+Using bracket to access to a property:
+
+
+const person = {
+	'first-name': 'Ehsan',
+	20: 'some value for numeric key'
+}
+
+1. the `first-name` is string key and only accessable with brackets:
+
+person['first-name'];
+
+2. We can access numeric keys only with brakcets:
+
+person.20 // Error: Unexpected number
+
+person[20]; // 'some value for numeric key'
+
+note:
+we can use numeric keys in quotation:
+
+person['20']; // 'some value for numeric key'
+
+note:
+Numeric key will automatically sorted when we show the whole object properties
+
+
+3. To use dynamic key to access or set object property, we can only use brackets:
+
+3.1 to access properties:
+
+const keyName = 'firstName'
+
+const fn = person[keyName];
+
+3.2 to set property dynamically:
+
+const myKey = 'age';
+
+const person = {
+	firstName: 'Ehsan',
+	[myKey]: 31
+}
+
+
+note:
+We can use for-in loop to access to the object keys dynamically.
+
+
+------------------------------------
+
+Spread operator
+
+Same as arrays, objects can copy with ..spread operator and not for nested properties. we can override properties we want.
+
+const person1 = {
+	age: 31,
+	skills: ['nodejs', 'tdd']
+}
+
+const person2 = {...person1, skills: [...person1.skills, 'C#']} // overriding skills property after using spread operator.
+
+person1.skills.push('git') // only added for person1 not person2
+
+
+-----------------------------------
+
+Object.assign()
+
+Same as spread operator, assing method can copy object to another object without reference copy:
+
+const person1 = {
+	name: 'Ehsan'
+}
+
+const person2 = Object.assign({}, person1);
+
+person1.name = 'Zahra' // person2.name is still Ehsan
+
+but spread operator is recommended because it is shorter.
+
+
+note:
+Object.assign is useful when we need to merge some objects onto an object. spread operator can't help but Object.assign can.
+
+
+-----------------------------------------
+
+Object destructuring:
+
+Just as arrays, in objects we can destruct properties to variables:
+
+const person = {
+	name: 'Ehsan',
+	age: 31,
+	gender: 'male'
+}
+
+const { name, ...otherInfo } = person;
+
+
+We can set default value to new variables, but if the property of objects has value, the default value will be avoided:
+
+const { name = 'Ahmad', city = 'Tehran' } = person; // name still is Ehsan, but city is Tehran because city is not exist in person object.
+
+
+If we have rest element, it must be last element:
+
+const { name, city = 'Tehran', ...otherInfo } = person;
+
+
+if we want to set another name for variable, we can use syntact below:
+
+const { name: personName } = person; // personName is the new name for `name` variable;
+
+
+note:
+
+When variables are declared before, we have to use () around:
+
+let a, b;
+
+({a, b} = {a: 1, b: 2});
+
+-------------------------------
+
+Checking for property existance:
+
+We can use `in` keyword to check:
+
+if('name' in person) { // instead of person.name === undefined
+	...
+}
+
+
+
+-----------------------------------
+
+`This` keyword:
+
+this refers to the object
+
+const movie = { 
+	name: 'move1', 
+	getThis: function () {
+	    console.log(this)
+	}
+}
+
+movie.getThis(); // {name: 'movie1', getThis: f}
+
+note:
+If we use arrow functions instead of function keyword, this will refer to the source, not movie object.
+
+
+----------------------------------------------
+Where arrow functions are usefull?
+
+
+If we have nested functions and want to access to top `this` object, we cannot use `function` keyword in nested function because we want to access to the `this` of parent object not nested function. so we can easily use arrow funcions:
+
+const arr = [1,2,3];
+
+const movie = { 
+	gener: 'action', 
+	getName: function() {
+		    arr.forEach(function(n) {
+				console.log('movie ' + n + ' ' + this.gener); // this does not refers to movie, because normal functions change binding of `this`. (and because forEach function binds this to global object (Window) this refers to Window)
+		    });
+	}
+}
+
+so if we use arrow functions:
+
+const movie = { 
+	gener: 'action', 
+	getName: function() {
+		    arr.forEach(n => console.log('movie ' + n + ' ' + this.gener); ); // this refers to movie object, because arrow functions don't change binding of `this`
+	}
+}
+
+
+
+note:
+If we destruct object to a variable, the `this` keyWord doesn't refer to movie object and behaves like arrow function:
+
+const { getThis } = movie;
+
+getThis(); // Window
+
+
+So to solve this problem, we could use `bind` method:
+
+
+bind:
+
+let { getThis } = movie;
+getThis = getThis.bind(movie); // this will refer to movie object
+getThis(); // movie object
+
+call:
+getThis = getThis.call(movie); // this will refer to movie object
+getThis(); // movie object
+
+
+apply:
+getThis = getThis.apply(movie); // this will refer to movie object
+getThis(); // movie object
+
+
+
+---------------------------------------
+
+bind vs call vs apply
+
+
+bind returns a new function. in example above, getThis.bind() returns a new function.
+
+call executes that function, and accepts simple arguments.
+
+apply is just the same as call, but accepts array of arguments.
+
+
+
+----------------------------------------
+Method shorthand syntax:
+
+In the movie object above, we can define the fucntion with shorter syntax:
+
+const movie = { 
+	name: 'move1', 
+	getThis() {
+	    console.log(this)
+	}
+}
+
+
+
+
+
+
+
+------------------------------------------------
+
+Setter and Getter
+
+
+const person = {
+	set name(val) {
+		if(val.trim() !== '') {
+			this._name = val;
+		}
+	}
+
+	get name() {
+		return this._name;
+
+	}
+}
+
+
+person.name = 'Ehsan'
+
+console.log(person.name) // Ehsan
+
+
+
+
+---------------------------------------------
+
+Object.getOwnPropertyDescriptors() and Object.defineProperty()
+
+
+With this method, we can change the setting of descriptors (properties) of an object. when we run above code, we can see four settings:
+
+const person = {
+	name: 'Ehsan',
+	greet: () => {}
+}
+
+Object.getOwnPropertyDescriptors(person):
+
+
+for name:
+
+configurable: true
+enumerable: true
+value: "Ehsan"
+writable: true
+
+1. configurable: true
+This means we can delete or re-define the property. if set to false, we can't delete it or reset that.
+
+2. enumerable: true
+This means this property can appear in for-in loop or not. if we want a property to not appear in for loop we can set it to false.
+
+3. value
+This is the current value of the property.
+
+4. writable: true
+This means we can reset the value or not. if set to false, we can't change the value. for example, name = 'Ahmad' will not thrown error but the value will not be changed.
+
+
+Object.defineProperty()
+
+To change definition of properties, we can use this command:
+
+Object.defineProperty(person, 'name', {
+	configurable: true
+	enumerable: false
+	value: "Ahmad"
+	writable: false
+});
+
+
+
+======================================================
+================ Class ===============================
+======================================================
+
+Field vs property
+
+If we define a field and set a value with this in constructor, the property in constructor will ovverride the value of field:
+
+class myC {
+	age = 36 // this is a field in class
+}
+
+let c = new myC();
+c.age // 36
+
+class myC {
+	age = 36;
+	
+	constructor() {
+		this.age = 32 // this is a property an will ovverride the age field value
+	}
+}
+
+
+let c = new myC();
+c.age // 32
+
+
+
+------------------------------------------------------
+
+Inheritance:
+
+If we extend a parent class with child class and set a property or value in that subclass, it will override the parent class property and fields. because the `this` operator refers to the child class:
+
+class Parent {
+	constructor() {
+		this.age = 35;
+	}
+}
+
+
+class Child {
+	constructor() {
+		super();
+		this.age = 31;
+	}
+}
+
+
+let c = new Child();
+c.age // 31
+
+
+
+
+Also if we define a method in child class and the body of method does not empty, the child method will be called and the parent method won't be called. in fact, `this` operator will refer to the child class:
+
+class Parent {
+	myMethod() { console.log('Hello from Parent')}
+
+	constructor() {
+        	this.myMethod()
+    	}
+}
+
+
+class Child {
+	myMethod() { console.log('Hello from Child')}
+
+	constructor() {
+	        super();
+    	}
+}
+
+
+let c = new Child(); // Hello from Child
+
+
+
+note:
+
+If we need to call parent's method or property, we can use super keyword:
+
+super.myMethod();
+
+super.age;
+
+
+------------------------------------------
+
+instanceof
+
+To check if a variable is an instance of a class, we cau use this:
+
+let c = new myClass();
+
+c instanceof myClass // true
+
+we can add parentheses:
+
+c instanceof(myClass) // true
