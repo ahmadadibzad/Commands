@@ -1,0 +1,17 @@
+nest -v
+
+nest new project_name
+
+
+======================================================
+=================== Endpoint, Route ==================
+======================================================
+
+To define a route:
+
+1. @Controller('full controller and action path like controller/action')
+
+2. @Get('full controller and action path')
+
+3. @Controller('controller path')
+   @Get('action path')
