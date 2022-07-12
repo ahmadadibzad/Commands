@@ -1,0 +1,292 @@
+centos:
+
+
+remove repository from apt list
+sudo rm /etc/apt/sources.list.d/<Repo_Filename>.list
+
+
+clear // Clears screen
+
+Ctrl + L // To clear screen without use commands
+
+-find ip address:
+
+ifconfig
+
+
+-to login without graphically login:
+
+-in the login page, Press Ctrl + Alt + F1 + F2 + F3 it goes to centos terminal login. we can type in user and password.
+
+-to back to the graphical login page just press F1
+
+
+-Login using SSH:
+
+ssh ehsan@192.168.136.129
+
+-then type yes
+
+-then enter user and password
+
+-for test the login, we can create a file in target machine:
+
+echo "Hello from windows" >> filetest
+
+-this command will create a file named filetest in target linux. in target linux we can see it by command ls. and then we can read the file with command cat filetest and we can see "Hello from windows".
+
+
+
+To copy a file from another machine to this machine, we can use this:
+
+scp ehsan@192.168.136.129:filetest .
+
+this code will copy that file to current path (the . means current path)
+
+
+
+Note:
+for any command, there is a help list. we can see help list with option `--help` and it shows a list for available command options.
+
+
+
+whoami // returns user name
+
+hostname // returns device name. it can be changed at settings-->Details-->Device name
+
+
+uname // information about system
+
+su - // login with super user (root)
+
+exit // logout from root user
+
+passwd // changing password for current user
+
+
+ls // list of files in current directory
+
+ls -l // shows one-line
+
+cat <filename> // reads content of a file
+
+touch <file> // if the file isn't exists, it creates a file with this filename, but if the file is already exist, just changes the modify date.
+
+
+wc <filename> // wordcount, counts words of a file
+
+last // shows last login loggs of all users
+
+
+date // show the date of today
+
+
+man <something> // show reference manual of a thing. for example man man, or man ls
+
+man -k <something> // searchs for anything that contains `something`
+
+--------------------
+
+stdin, stdout
+
+stdin: standard input for a command. for example in cat <filename> then `filename` is the standard input for cat.
+
+stdout: standard output of a command. for example when file conten is shown by cat command, it's the standard input of cat command.
+
+
+| pipe: we can pass in stdout of a command to another command as stdin with | pipe. for example:
+
+
+cat test.txt | wc
+
+
+grep "some char" <filename> // finds specific chars in a file
+
+
+using more | pipes:
+
+man -k user | grep "new" | wc
+
+-------------------------------------------------
+
+pinfo // shows the documentation of all doc files
+
+pinfo <somefile.info> // goes to a doc file directily
+
+pinfo <somefile.info> <somenode> // goes to a doc file and a node directily
+
+
+we can find doc files in /usr/share/doc path too.
+
+---------------------------
+
+less // shows content of file scrollable
+
+top // show latest linux tasks sorted by new tasks
+
+=========================================
+=========== Path ========================
+=========================================
+
+note:
+root user directories are diferrent from other user directories. for example, /bin is for root user, but /usr/bin is for other users. if we logged in as ehsan for example, we only see directory and files that creates for this user not all users.
+
+note:
+use ls -l to see full path
+
+pwd // shows current path
+
+lsblk // shows all disk partitions and devices
+
+/usr/bin   // all programs are here
+
+/boot   // boot files
+
+/dev   //s show all devices
+
+lib, lib64  // linux libraries
+
+/proce  // system processes
+
+/srv
+
+/var  // variables
+
+/var/log  //logs
+/var/log/boot.log  // shows the login logs. we can find boot problems in this file.
+
+/opt  // installed softwares comes here
+
+sys  // system files, like system32 in windows
+
+
+home  // means /home path
+
+~  // means /home/thisUser path
+
+/  // means root path
+
+cd  // goes to ~ path
+
+cd <path> // goes to specific path
+
+..  // previous directory
+
+.  // current directory
+
+echo $HOME // prints ~ path
+
+
+
+ls -lrt  // r: revers, t: sort by time
+
+ls  -lR   // R: Recursive
+
+ls -lh   // Human readable for file size
+
+ls  -al  // show hidden files
+
+ls  -lF  // classify, show file and directory formats??
+
+
+
+
+==============================================
+================== Persmittions ==============
+==============================================
+
+
+l :  shortcut link
+d : directory
+- : file
+
+r : read
+w : write
+x : execute  // open file or cd to directory
+
+<first permition: user> <secound permition: group> <third permition: others>
+
+lrwxrwxrwx  // this is a link file, user can read, write and execute this file, also group and others can
+
+drwxr-xr--   // user has full permission, group only can read and execute the file, others can only read the file.
+
+-----------------------------------------
+
+Wildcards:
+searching file names:
+
+*  // everything
+
+?  // 1 character
+
+[a-z]
+
+
+=============================================
+============== cp, mv, rm ===================
+=============================================
+
+cp <filename> <?newname>  // copy a file to current directory
+
+cp <filename> <dirname>  // copy a file to another directory
+
+cp <dirname> <newname>   // copy directory
+
+note:
+if newname already exists, content of directory will be copied to new destination. so if we don't want to do that, we can use -i to prompt before do that.
+
+cp -i   // prompt to confirm copy
+
+mv <filename> <newpath>  // cut file to another path
+
+note:
+to rename a file or directory, we can just use mv with destination command:
+mv <curr> <newname>
+
+just like cp
+
+
+
+rm <filename>   // removes file
+
+rm -r <dir>   // removes directory
+
+rmdir <dir>  // if dir is empty
+
+rmdir -p <fullPathOfLastDir>  // to remove dir with 'mkdir' even is not empty
+
+
+note:
+Do not use rm -rf /
+it will remove root directory!!!
+
+
+mkdir <paht>
+
+note:
+if parent directory isn't exist, an error will thrown. to solve this, we can use
+
+mkdir <filename> <parent/child>  // error: can not create directory 'parent'
+
+to solve this, use -p:
+
+cp -p <filename> <parent/newname>
+
+
+
+=======================================================
+================ tar, extract =========================
+=======================================================
+
+
+tar cvf  <filename>  // create tar file in current dir. v means verbosely. it shows all files have been created.
+
+tar cvf <file> <dest>  // create tar file in destination path
+
+tar czf <file>   // create tgz file
+
+tar cjf <file>   // create tbz file
+
+tar xvf  <filename>  // extract tar file
+
+tar tvf  <filename>  // show tar file contenr without extract that.
