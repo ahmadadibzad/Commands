@@ -1,0 +1,115 @@
+$ docker version
+
+$ docker info  // show all info about docker installed
+
+$ sudo docker container run --name webhost-1 -p 8080:80 --detach nginx  // pull nginx image from docker hub and name it to webhost-1 and publish it to port 8080 and map incoming requests to port 80. so we can test it in browser by localhost:8080 after installation. in this command --detach means release terminal to me after creation (logs won't show in terminal).
+
+note:
+we can allow docker to choose a name automatically:
+$ sudo docker container run -p 8081:80 nginx
+
+
+
+$ sudo docker container ls  // show running containers
+
+$ sudo docker container ls -l  // show latest containers
+
+$ sudo docker container ls -a  // show all containers
+
+
+Start:
+$ sudo docker container start <name or id>
+
+Stop:
+$ sudo docker container stop <name or id>
+
+Restart:
+$ sudo docker container restart <name or id>
+
+Remove:
+$ sudo docker container rm <name or id>
+
+note:
+if a container is running, we can't remove it normally. we must stop it, or using -f to force it to remove:
+
+$ sudo docker container rm -f <name or id>
+
+
+Prune:
+We can remove all stopped containers:
+
+$ sudo docker container prune
+
+
+Rename:
+$ sudo docker container rename <name> <newName>
+
+
+Show logs:
+$ sudo docker container logs -f <name>
+
+-f means show logs interactivly.
+
+
+Show port:
+$ sudo docker container port <name>
+
+
+Processes:
+we can see linux processes of any container with this:
+
+$ sudo docker container top <name>
+
+we can kill any process with this:
+
+$ sudo kill -9 <processId>
+
+
+Stat:
+We can check os resource usage for a container and refreshes it every one second
+
+$ sudo docker container stats <name>
+
+note:
+If we don't pass container in, it will show all containers stat.
+
+We can use --no-stream to don't refresh and only show once time
+
+
+exec:
+We can connect to container bash file with this:
+
+$ sudo docker container exec -it  mysql-db-1 /bin/bash   // in this example we connect to mysql container. -i means interactive. -t means give a virtual bash (tty) to me.
+
+
+We can run a mysql query directly:
+
+$ sudo docker container exec mysql-db-1 mysql -u root -p'123456' -e "use myDb; select * from myTable;
+
+
+
+
+We can set that when container stops, it will be removed automatically:
+
+$ sudo docker container run -exec -it -rm --name ubuntu1 ubuntu /bin/bash
+
+============================================
+================ Inspect ===================
+============================================
+
+$ sudo docker container inspect <name or id>
+
+
+to see especific node in json data:
+
+$ sudo docker container inspect -f "{{ .Config.Env }}"  <name or id>
+
+
+
+
+We can pass in variable to inspect -f to show a specific key-values for all containers:
+
+In this code we print all containers names and exposed ports:
+
+$ sudo docker container inspect -f '{{ .Name }} --> {{ .Config.ExposedPorts }}' $(sudo docker container ls -aq)
+
