@@ -12,26 +12,106 @@ touch index.html // to create a new file in current folder in linux
 git add index.html // to stage a specific file
 
 git add -A // to stage all changed files
+git add . // to stage all changed files
 
 git commit -m 'index file created'
 
 git log // show all logs
+git log --oneline // shows logs shortly
 
 git diff HEAD // shows the differents from last commit until now (head likes disk head, and points to the last commit where the head of git commits is there)
 
 git diff --staged // shows the differents of staged files
 
+==========================================================================
+===================== Reset, Revert and Checkout =========================
+==========================================================================
+
 git reset page2.html // removes file from stage
+
+git reset . // removes all staged files
+
+git reset --mixed commit_id // removes commits newer than this commit and also unstages them
+
+git reset --soft commit_id // removes commits newer than this commit but not unstage them
+
+git reset --hard commit_id // deletes all commits newer than this commit like --mixed, and also unmodify them like they never been existed!
 
 git checkout -- page2.html // unchanges the file to the 'before commit' state
 
+git checkout index.html // unmodifys the modifyed file
+
+// to unmodify all modified files:
+git checkout *
+git checkout .
+
+//
+// Summary
+//
+
+// to remove commits newer than commit_id:
+git reset --soft or --mixed commit_id
+
+// to unstage files
+git reset .
+
+// to unmodify files
+
+git checkout .
+
+git revert commit_id // reverts the files to the selected commit, adds a commit and sets HEAD to that
+
+
+// to switch to the previous states of repository (old commits).
+git checkout commit_id // switchs to old commit state safely and no commit will be deleted
+
+// to back to the last commit state:
+git checkout master
+
 git rm filename
+
+
+==========================================
+============== GitIgnore =================
+==========================================
+
+.gitignore
+// to ignore files we can add filenames to this file
+
+filename.ext // ignores a file in the root
+/filename.ext // also ignores a file in the root
+
+foldername/filename.ext // ignores the file in a folder
+
+foldername // ignores all files in a folder
+
+foldername/* // also ignores all files in a folder
+
+foldername/*.ext // ignores all files in a folder with the specify extention
+
+
+
+example:
+/text1.txt // or we can remove foreslash: text1.txt
+
+// note:
+// when we create .gitignore file, it only ignores new files and does not ignore the files that created before .gitignore file. to fix this problem, we can remove the cache for all files:
+
+git rm -r --cached .
+
+// After run this command, the older files will mark as 'deleted' in stage list. we need to commit them and .gitignore file. so run `git add .` to add .gitignore and then commit all. after that git will ignore those files.
+
+// note:
+// It's very recommended to create .gitignore once we create the repository.
+
+
 
 
 
 git branch // show all branches
 
 git branch myBranch // creates a branch (copy from master)
+git checkout -b myBranch // Also creates myBranch
 
 git checkout myBranch // switch to branch myBranch
 
@@ -40,15 +120,92 @@ git merge master // merges myBranch files with master files
 git branch -d myBranch // Deletes branch
 
 
+
 git clone github repo address
 
 git push origin main // push local main branch to github origin branch
 
 git pull origin main // get last version on github to local main branch
 
+git remote
 
+git remote add remote_address
+
+
+----------
+
+git remote add origin remote_address
+
+git push origin master // push to origin from branch master
+
+
+//Set up branch master to track remote origin/master. after that we don't need to write origin master when we push and pull:
+git branch --set-upstream-to=origin/master master
+
+//then:
 git push
-
 git pull
 
-git remote
+
+
+git show commit_id // Shows commit details
+git show 7b0e61e // show commit details by short id showed by --oneline command
+git show v1.0 // Shows commit details
+git show HEAD // shows the head details (last commit)
+git show HEAD~1 // shows the previous commit of last
+git show HEAD~n // shows the nth previous commit of last
+
+
+git tag // List of all tags
+
+git tag -a v1.0 -m 'My comment' // Adds a tag named v1.0
+
+git push origin v1.0 // Push tag to remote
+
+git push origin --tags // Push tags
+
+git checkout v1.0 // Checkouts a tag, but it won't change tag commits. we should create a new branch to work with a tag version.
+
+
+git blame file_name -L8 // Find all changes history and auditors for line 8 in the file
+
+git blame file_name _L8,10 // Line 8 and 10
+
+
+// bisect
+
+bisect comes from binary search in commits!
+git searchs commits to find the commit that starts error!
+
+git bisect start // Start searching
+
+git bisect bad // we have that error
+
+git bisect good commit_id // This commit has not that error
+
+git bisect bad // Still have error!
+
+
+fork : Get a copy of a repository created by others and work on it in my own repository
+
+Pull request / Merge request: Request to origin auditor of an fork to pull / merge my repository to original repository so that pull my changes
+
+
+// to set config user info
+git config --global user.name "my name"
+git config --global user.email "my email"
+
+// to get config user info
+git config --global user.name
+git config --global user.email
+
+// to open the global file .gitconfig in vscode
+// notice that this file is in C:\Users\username\.gitconfig path in windows
+code ~/.gitconfig
+
+git config --global --unset user.name // removes a config in .gitconfig file. in this example [user] name
+
+// commit messge
+// if we don't enter a commit message with -m command, an editor will be opened to enter a message. in windows by default vscode is the editor. but if we remove this default editor config with
+git config --global --unset core.editor
+// command, bash will be opended at the next time. to insert a message in bash editor, we have to press i key on keyboard to insert a text. then for saving that we have to press escape key and the Shift + ; (:) and then type wq to exit from editor and commit
