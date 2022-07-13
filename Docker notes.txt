@@ -113,3 +113,55 @@ In this code we print all containers names and exposed ports:
 
 $ sudo docker container inspect -f '{{ .Name }} --> {{ .Config.ExposedPorts }}' $(sudo docker container ls -aq)
 
+
+
+===========================================
+================ Image ====================
+===========================================
+
+$ sudo docker image ls  // show list of all images
+
+$ sudo docker image pull mongo:4.0
+
+
+$ sudo docker image inspect
+
+
+Create tag:
+
+$ sudo docker image tag <imageName> <newImageName>:tag
+
+$ sudo docker image tag hello-world  ahmadadibzad/hello-world:1.1
+
+
+push to docker hub:
+
+$ docker login
+
+$ sudo docker image push <imageName>:tag
+
+$ docker logout
+
+
+
+see all layers of an image:
+
+$ sudo docker image history <imageName>:tag
+
+
+
+remove image:
+
+$ sudo docker image rm <name>
+
+
+save image to an output file:
+
+$ sudo docker image save -o <newFileName> <imageName>:tag   // -o means output
+
+
+load image from saved file:
+
+$ sudo docker image load -i <savedFileName>   // -i means input
+
+
