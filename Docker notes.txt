@@ -2,7 +2,7 @@ $ docker version
 
 $ docker info  // show all info about docker installed
 
-$ sudo docker container run --name webhost-1 -p 8080:80 --detach nginx  // pull nginx image from docker hub and name it to webhost-1 and publish it to port 8080 and map incoming requests to port 80. so we can test it in browser by localhost:8080 after installation. in this command --detach means release terminal to me after creation (logs won't show in terminal).
+$ sudo docker container run --name webhost-1 -p 8080:80 --detach --network webService1 -v volumeName:/var/lib/<name> --mount type=bind,source=/home/ehsan/projects/data,target=/app nginx   // pull nginx image from docker hub and name it to webhost-1 and publish it to port 8080 and map incoming requests to port 80. so we can test it in browser by localhost:8080 after installation. in this command --detach means release terminal to me after creation (logs won't show in terminal). --network means set this container in webService1 network. otherwise bridge network will be set. With -v we can set the volume of container data with custom name and mount path. if volume nama is already exists, that volume will be used and no new volume will be created. --mount means mount this container with bind mount type, from source path in host to target path in the container.
 
 note:
 we can allow docker to choose a name automatically:
@@ -152,7 +152,7 @@ $ sudo docker image history <imageName>:tag
 
 remove image:
 
-$ sudo docker image rm <name>
+$ sudo docker image rm <name>:tag
 
 
 save image to an output file:
@@ -165,3 +165,109 @@ load image from saved file:
 $ sudo docker image load -i <savedFileName>   // -i means input
 
 
+build image:
+
+$ sudo docker build -t <name>:tag .   // build from Dokerfile in . path
+
+if Dockerfile name is changed (for example Dockerfile.multi) we must use:
+
+$ sudo docker build -t <name>:tag . -f Dockerfile.multi
+
+
+=====================================
+======= cleanup spaces ==============
+=====================================
+
+$ sudo docker image prune -a
+
+$ sudo docker system prune
+
+$ sudo docker system prune -a
+
+$ sudo docker volume prune
+
+
+
+
+
+============================================
+============ Network, DNS ==================
+============================================
+
+bridge is default network in docker
+
+
+To show all networks:
+$ sudo docker network ls
+
+$ sudo docker network inspect <id or name>   // show network details. only running containers will be shown in  containers node.
+
+To create new network:
+
+$ sudo docker network create <name>
+
+note:
+when we create new network, the driver will be set to bridge by default.
+
+
+connect a network to a container:
+
+When we create a new container, the default network is bridge (look at network node with inspect command). we can connect container to another network:
+
+$ sudo docker network connect <networkName> <containerName>
+
+Now, out container has two network connected: bridge and other network.
+
+We can disconnect bridge network from container:
+
+$ sudo docker network disconnect <networkName> <containerName>
+
+
+
+==================================================
+=============== Volume, Bind mount ===============
+==================================================
+
+We can see volume of an image with inspect:
+
+.ContainerConfig --> .volume   // /var/lib/mysql
+
+
+$ sudo docker volume ls
+
+$ sudo dokcer volume inspect <name>    // we can see mount volume in the host. like: /var/lib/docker/volume/mysqldb1/_data
+
+$ sudo docker volume rm $(sudo docker volume ls -q)   // remove volume(s)
+
+
+To use an existing volume instead of creating new volume, We can select that volume when we want to run a container:
+
+$ sudo docker container run ... -v existingVolume:/path/ imageName
+
+
+To see container's volume, we can inspect that and look at .Mount node:
+
+. Mounts --> .VolumesArray
+
+
+
+
+Difference between volumes and bind mounts:
+
+1. With volumes we can't modify data files, but in bind mounts we can. also with non-docker process we can.
+
+2. We can use volumes in Dockerfile, but not bind mounts.
+
+
+
+Bind mount:
+
+To bind data from host to container, or from container to host, with bind mount type, we can use this in run command of container:
+
+$ sudo docker container ... --mount type=bind,source=/path/to/host/data,target=/path/to/container <containerName>
+
+for example: --mount type=bind,source=/home/ehsan/projects/data,target=/app
+
+we can inspect the container and see .Mounts node.
+
+The bind mount is two-way binding. it means that if we create a file in host, it automaticaly copies to container. and if we create a file in contaienr, it automatically appears in host path too.

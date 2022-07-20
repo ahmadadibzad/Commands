@@ -1,3 +1,15 @@
+sudo apt update
+
+sudo apt --upgradable
+
+sudo apt upgrade
+
+sudo apt autoremove
+
+when update fails, we can try again with this:
+sudo apt-get update --fix-missing
+
+
 centos:
 
 
@@ -62,6 +74,17 @@ su - // login with super user (root)
 exit // logout from root user
 
 passwd // changing password for current user
+
+-------------------------------------------
+
+Fix error `user is not in the sudoers file`:
+
+add the user below admin user like below syntax.
+
+# user_name ALL=(ALL)  ALL
+
+
+
 
 
 ls // list of files in current directory
