@@ -235,10 +235,10 @@ let ob2 = { ...obj1 };
 
 We can call functions in two ways:
 
-1. Directlye // myFunc();
+1. Directly // myFunc();
 2. Indirectly // bind or attach function: btn.addEventListenr('click', myFunc);
 
-We can store a function in a vaiable:
+We can store a function in a variable:
 
 const myFunc = function myFuncName() { ... }
 
@@ -625,7 +625,7 @@ Because spread operator retuns all of the array elements one by one.
 
 const arr = ['Ehsan', 'Adibzad', 'Male', 31]
 
-const [ firstName, lastName, ...otherInfo] // otherInfo: ['Male', 31]
+const [ firstName, lastName, ...otherInfo] = arr // otherInfo: ['Male', 31]
 
 
 
@@ -1023,7 +1023,7 @@ Object.defineProperty(person, 'name', {
 
 Field vs property
 
-If we define a field and set a value with this in constructor, the property in constructor will ovverride the value of field:
+If we define a field and set a value with this in constructor, the property in constructor will override the value of field:
 
 class myC {
 	age = 36 // this is a field in class
@@ -1036,7 +1036,7 @@ class myC {
 	age = 36;
 	
 	constructor() {
-		this.age = 32 // this is a property an will ovverride the age field value
+		this.age = 32 // this is a property and will override the age field value
 	}
 }
 
@@ -1110,7 +1110,7 @@ super.age;
 
 instanceof
 
-To check if a variable is an instance of a class, we cau use this:
+To check if a variable is an instance of a class, we can use this:
 
 let c = new myClass();
 

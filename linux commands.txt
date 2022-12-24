@@ -1,6 +1,8 @@
 sudo apt update
 
-sudo apt --upgradable
+sudo apt list --upgradable  // list of upgradable packages
+
+sudo apt list --installed
 
 sudo apt upgrade
 
@@ -23,7 +25,18 @@ Ctrl + L // To clear screen without use commands
 
 -find ip address:
 
-ifconfig
+# ifconfig
+
+if it didn't work, try this:
+
+# ip address
+
+# nmcli  // network manager cli
+
+note:
+If network icon is disappears and no interner access, try this:
+
+# nmcli network on
 
 
 -to login without graphically login:

@@ -1,6 +1,25 @@
 nest -v
 
-nest new project_name
+
+# nest new <project_name>
+
+To skip git:
+
+# nest new project_name --skip-git
+
+
+To generate a module or something else:
+
+# nest g module <name (lowercase)>  // create a new module
+or
+# nest generate module <name>
+
+Tt will create a new folder and inside of it creates a new module file (UpperCase) and imports it to the app.module.ts file.
+
+
+# nest g controller <name>
+
+nest g service <name>
 
 
 ======================================================
@@ -15,3 +34,65 @@ To define a route:
 
 3. @Controller('controller path')
    @Get('action path')
+
+
+We can set a global prefix in main.ts file. for example:
+
+# app.setGlobalPrefix('api');
+
+and all of the routes will have /api/ at start of the path.
+
+
+
+
+
+
+
+To inject a service to another service, we must:
+
+1. Inject that class into this class constructor.
+
+2. Export that service class in it's module file.
+
+3. Import that module to target module.
+
+
+
+
+===========================================
+=================== Pipe ==================
+===========================================
+
+Pipes are used for validation.
+
+main.ts:
+app.useGlobalPipes(new ValidationPipe());
+
+
+To increase the security of pass in dtos, we can add { whiteList: true } as option. so additional parameters in dto will be ignored.
+
+app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+
+
+
+
+
+
+
+
+To enable transforming data in response dtos, we can add these to new ValidationPipe():
+{
+   transform: true,
+   transformOptions: { enableImplicitConversion: true },
+}
+
+and then add an object to providers array:
+
+app.module.ts:
+providers: [
+    AppService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ClassSerializerInterceptor,
+    },
+]

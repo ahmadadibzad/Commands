@@ -71,6 +71,23 @@ git checkout master
 git rm filename
 
 
+
+=========================================
+============ Change Author ==============
+=========================================
+
+To change author of all commits:
+$ git rebase --root --exec "git commit --amend --author='name <email>' --no-edit"
+
+
+To change the use of last commit:
+$ git commit --amend --reset-author --no-edit
+
+
+See link below:
+https://stackoverflow.com/questions/3042437/how-to-change-the-commit-author-for-a-single-commit
+
+
 ==========================================
 ============== GitIgnore =================
 ==========================================
@@ -117,6 +134,8 @@ git checkout myBranch // switch to branch myBranch
 
 git merge master // merges myBranch files with master files
 
+git branch -M 'main'  // rename branch to 'main'
+
 git branch -d myBranch // Deletes branch
 
 
@@ -145,6 +164,14 @@ git branch --set-upstream-to=origin/master master
 //then:
 git push
 git pull
+
+
+
+To remove commits in github:
+$ git push -f origin HEAD^:master
+
+it would remove all commits to github but it leaves commits in local machine. see link belove:
+https://stackoverflow.com/questions/448919/how-can-i-remove-a-commit-on-github
 
 
 
@@ -186,7 +213,7 @@ git bisect good commit_id // This commit has not that error
 git bisect bad // Still have error!
 
 
-fork : Get a copy of a repository created by others and work on it in my own repository
+fork : Getting a copy of a repository created by others and work on it in my own repository
 
 Pull request / Merge request: Request to origin auditor of an fork to pull / merge my repository to original repository so that pull my changes
 
