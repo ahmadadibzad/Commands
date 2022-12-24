@@ -1,0 +1,3 @@
+# type(12)  // Determines the type of an input
+
+# 10_000_000_000  // 10000000000 We can use underscores to separate numbers. python completely ignores them.
