@@ -1,0 +1,26 @@
+# ng version
+
+# ng new myApp
+
+# ng serve   // To run the application
+
+# npm install --save primeflex   // A css grid framework
+
+there are two ways to import a css package installed by nodejs:
+
+1. Adding relative path to the styles.scss file:
+@import '~primeflex/primeflex.css'  // This means import from node_modules folder
+
+2. Adding absolute path to angular.json file in projects-->[projectname]-->architect-->build-->styles:
+
+# "/node_modules/primeflex/primeflex.css"
+
+
+====================================
+============= Components ===========
+====================================
+
+ng generate component shared/header  // Creates a component in /src/app/shared/header path
+Or
+ng g component shared/header
+
