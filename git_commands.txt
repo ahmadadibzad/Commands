@@ -165,7 +165,8 @@ git branch --set-upstream-to=origin/master master
 git push
 git pull
 
-
+Note:
+We have to pull changes from remote before push.
 
 To remove commits in github:
 $ git push -f origin HEAD^:master
