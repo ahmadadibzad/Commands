@@ -1,0 +1,460 @@
+Boxing and Unboxing:
+
+boxing: Converting a value type to a reference type:
+
+# int n = 25;
+
+# object obj = n
+
+unboxing: Converting a reference type to a value type:
+
+# int n = 25;
+
+# object obj = n
+
+# int i = (int)obj;
+
+
+
+
+===============================
+======== Data Types ===========
+===============================
+
+Operation between differents types:
+if we add two numbers of different types, the result will convert to larger type. if the result is larger than the size of larger type, it will convert to the next bigger type.
+
+# short x = 1;
+# int = 2;
+# var result = x + y  // Int32
+
+# int x = 1;
+# long = 2;
+# var result = x + y  // Int64
+
+# int x = 1;
+# uint = 2;
+# var result = x + y  // Int64
+
+note:
+Same as Java, the result of adding two values of short/byte type will be Int32! (not Int16/byte) and we have to cast the result to short/byte if we want.
+
+byte + byte = int
+short + short = int
+short + byte = int
+int + short = int
+int + long = long
+
+https://www.codeproject.com/Questions/1234495/Difference-between-adding-two-short-variables-and
+
+note:
+We can see type members by using MaxValue and MinValue property:
+# int.MaxValue  // 2147483647
+
+note:
+The result of adding a double/float to an int will be double/float:
+# int x = 1;
+# double y = 2;
+# var result = x + y  // double
+
+
+--------------------------------
+Convert between types:
+
+1. implicit convertion:
+convertion from a type to second type with defining a variable with second type.
+if we have a smaller type and we want to convert to a larger type, we can simply define a vaiable as larger type and assign the value to it:
+
+# int a = 1000;
+# long b = a;
+
+but for converting from smaller type to larger type, the implicit convert throws a compilation error because it might lose data. we have to convert it in explicit way.
+
+implicit typing:
+When we use 'var' keyword instead of a type name, we are using implicit typing. it is required somewhere like where we use LINQ.
+
+# var a = 123;  // int
+
+
+2. explicit convertion:
+using () for casting, and it is actually called explicit casting:
+
+# long a = 2150;
+# int b = (int)a;
+
+explicit typing:
+When we define variables with type name instead of 'var' keyword, we are using explicit typing.
+
+
+3. Using helpers:
+
+# long a = 42;
+# int b = Convert.ToInt32(a);
+
+
+4. Using 'Parse' method to casting from string to number:
+
+# string s = "1700";
+# int n = int.Parse(s)  // 1700
+
+
+
+===========================
+======== String ===========
+===========================
+
+'@' character:
+
+1. Verbatim strings: When there is '\' in our string. it improves readability. (by default the single '\' is not allowed in strings and we must use "\\").
+
+# string filePath  = "C:\\Documents\\readme.txt";
+
+# string filePath  = @"C:\Documents\readme.txt";
+
+
+2. Multi-line strings:
+By default, c# does not allow to have multi-lines in a strings. to use it we should use @ in front of out string:
+
+# string s = @"A
+	       B
+	       C";
+
+
+------------------------
+StringBuilder
+
+Strings are immutable. it means when we concat strings or assign new string to a variable, c# will create a new memory to save that. it may increase memory usage. for example:
+
+# string indexes = string.Empty;
+
+# for (int i = 0; i < 2500; i++)
+{
+	indexes += i.ToString();
+}
+#
+		
+# Console.WriteLine(indexes);
+
+When we run this code, it will take 5.11 Mb of memory! each time indexes += ... executes, the pointer will point to a new memory address to create the last result of concatenation. and previous memory will not be released.
+
+To solve this problem, We may use StringBuilder class or string.Concat():
+
+# StringBuilder strBld = new StringBuilder();
+
+# for (int i = 0; i < 2500; i++)
+{
+	strBld.Append(i.ToString());
+}
+#
+		
+# Console.WriteLine(strBld.ToString());
+
+It will use 0b of memory!
+
+
+-----------------------------
+string.Concat()
+
+As StringBuilder, Concat can join strings and create a integrated string.
+
+in example above, we could use this:
+
+.
+.
+.
+string.Concat(indexes, i.ToString());
+.
+.
+.
+
+
+
+-----------------------------------
+string.Join()
+
+It's similar to Concat, but we have to pass a character to combine separated strings. (we can use " ")
+
+
+
+
+=====================================
+========== Referecne Types===========
+=====================================
+
+
+Types in CTS (common type system)
+
+Value types:
+	Enumeration
+	Struct
+Reference types:
+	Classes
+	Interfaces
+	Delegates
+
+
+Type hierachy in .NET and C#:
+
+- Value Types:
+	- Predefined:
+		- Integer
+		- Boolean
+	- User defined:
+		- Enumertation
+		- Struct
+
+- Reference Types:
+	- Predefined:
+		- String
+		- Array
+	- User defined:
+		- Class
+		- Interface
+
+
+
+Note:
+object is a reference type.
+
+
+-----------------
+ref keyword:
+
+# int a = 13;
+
+# Inc(ref a);
+
+# Console.WriteLine(a);  //37
+	
+# void Inc(ref int x)
+{
+	x += 24;	
+}
+#
+
+	
+---------------------------------
+out keyword:
+
+# int a = 13;
+# Inc(out a, out int b);
+
+# Console.WriteLine(a);  // 59
+# Console.WriteLine(b);  // 86
+
+# void Inc(out int x, out int y)
+{
+	x = 59;
+	y = 86;
+}
+#
+
+
+
+----------------------------
+
+params keyword:
+
+params parameter must be the last parameted in method:
+
+# Inc(5, 10, 15);
+
+# void Inc(int x, params int[] y)
+{
+	foreach(int v in y)
+	{
+		Console.WriteLine(v);  // 10, 15
+	}
+}
+#
+
+---------------------------------------------
+Garbage collection:
+
+GC.collect();   // Removes all unused objects from memory.
+
+
+=======================================================
+========== Classes, Interface, Struct =================
+=======================================================
+
+Difference between struct and class:
+
+1. Struct can be new'ed or not, because it is value type. but class must be newed.
+
+
+-----------------------
+Inheritance
+
+class Parent
+{ }
+
+class Child : Parent
+{ }
+
+# Parent c1 = new Child();
+# (c1 is Parent)  // True
+# (c1 is Child)   // True
+
+# Parent c2 = new Parent();
+# (c2 is Parent)  // True
+# (c2 is Child)   // False
+
+-----------------------------
+Overriding virtual methods:
+
+We can sign a method in parent class with virtual, and override it in child class:
+
+#
+class Parent 
+{
+	public virtual void SayHello()
+	{
+		Console.WriteLine($"Hello");
+	}
+}
+#
+
+#
+class Child : Parent
+{
+	public override void SayHello()
+	{
+		Console.WriteLine($"Hi");
+	}
+}
+#
+
+
+-----------------------------
+Abstract classes and methods:
+
+An abstract class cannot be new'ed. it's similar to interfaces, but a class can only inherit from one abstract class.
+
+An abstract method has not body. it is only be declared. The child class must override the absteract parent class's method. it's similar to virtual keyword, but the method signed with virtual keyword has body but abstract mehtod has not.
+
+#
+abstract class Parent 
+{
+	public abstract void SayHello();
+}
+#
+
+#
+class Child : Parent
+{
+	public override void SayHello()
+	{
+		Console.WriteLine($"Greeting");
+	}
+}
+#
+
+
+===============================================
+============= LINQ, Collections ===============
+===============================================
+
+Enumerator:
+
+Each IEnumerable like arrays, lists and so on, has an enumerator method that returns IEnumerator interface. with that we can use loops on the collection. IEnumerator has MoveNext method, Current property and Reset method. we can use these to make a loop on it.
+
+# IEnumerable<string> names = new List<string>
+{
+	"Ehsan",
+	"Zahra"
+};
+#
+
+# IEnumerator<string> enumerator = names.GetEnumerator();
+
+# while(enumerator.MoveNext())
+{
+	Console.WriteLine(enumerator.Current);
+}
+#
+
+Note:
+All extentions in LINQ are based on IEnumerable and IQueryable interfaces.
+
+Note:
+foreach loop is used for the types that have IEnumerator interface. it users GetEnumerator() method and Current property and MoveNext() itself.
+
+
+------------------------------------
+Lambda, Named methods and anonymouse methods (delegate) for passing function argument:
+
+1. Lambda:
+# ... .Where(r => r > 10)   // Func<int, bool>
+
+2. Named method:
+# ... .Where(MyMethod);
+
+#
+static MyMethod(int arg)
+{
+	return arg > 10;
+}
+#
+
+3. Anonymouse method:
+... .Where(delegate (int r) { return r > 10; }
+
+
+
+
+=======================================================
+============== IDisposable, Memory ====================
+=======================================================
+
+When we use IO Directory, Sql connection or HttpClient operations, we should use IDisposable interface to automatically remove unmanaged memory resources.
+
+#
+class MyClass : IDisposable
+{
+	void Dispose()
+	{
+		//
+	}
+}
+#
+
+And when we are using that class, we should use `using` statement:
+
+#
+using (var obj = new MyClass())
+{
+
+}
+#
+
+
+Or we can use it in a try finally block:
+
+#
+try
+{
+	var obj = new MyClass();
+}
+catch
+{
+	GC.collect();
+}
+finally
+{
+	try
+	{
+		obj.Dispose();
+	}
+	catch(Extention ex)
+	{
+		// handle ex
+	}
+}
+#
+
+But this way is not good.
+
+We can set Max pool size and Connection Timeout in our connection string:
+
+# Max pool size=400;Connection Timeout=2;
