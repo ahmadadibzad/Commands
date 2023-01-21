@@ -378,7 +378,7 @@ Note:
 All extentions in LINQ are based on IEnumerable and IQueryable interfaces.
 
 Note:
-foreach loop is used for the types that have IEnumerator interface. it users GetEnumerator() method and Current property and MoveNext() itself.
+foreach loop is used for the types that have IEnumerator interface. it uses GetEnumerator() method and Current property and MoveNext() itself.
 
 
 ------------------------------------
@@ -401,7 +401,20 @@ static MyMethod(int arg)
 ... .Where(delegate (int r) { return r > 10; }
 
 
+-------------------------------
+ArrayList:
 
+We can use ArrayList to list multiple data types to a list.
+
+#
+var list = new ArrayList();
+list.Add("Reza");
+list.Add(2);
+#
+
+There are two problems:
+1- ArrayList is an untyped collectoin as seen above. So when we are doing a convertion, we have to be very mindful of the casting of the data to appropriate type.
+2- When we iterate that with foreach loop, Due to boxing and unboxing for value types. Because when the value types are added to the list, They will be boxed and saved as an object, And when they are retrieved, They will be unboxed from object type into a value type.
 
 =======================================================
 ============== IDisposable, Memory ====================
