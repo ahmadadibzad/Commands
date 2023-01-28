@@ -21,8 +21,8 @@ unboxing: Converting a reference type to a value type:
 ======== Data Types ===========
 ===============================
 
-Operation between differents types:
-if we add two numbers of different types, the result will convert to larger type. if the result is larger than the size of larger type, it will convert to the next bigger type.
+Operation between different types:
+if we add two numbers of different types, the result will convert to larger type. if the result is larger than the size of the larger type, it will convert to the next bigger type.
 
 # short x = 1;
 # int = 2;
@@ -61,14 +61,14 @@ The result of adding a double/float to an int will be double/float:
 --------------------------------
 Convert between types:
 
-1. implicit convertion:
-convertion from a type to second type with defining a variable with second type.
-if we have a smaller type and we want to convert to a larger type, we can simply define a vaiable as larger type and assign the value to it:
+1. implicit conversion:
+conversion from a type to second type with defining a variable with second type.
+if we have a smaller type and we want to convert to a larger type, we can simply define a variable as larger type and assign the value to it:
 
 # int a = 1000;
 # long b = a;
 
-but for converting from smaller type to larger type, the implicit convert throws a compilation error because it might lose data. we have to convert it in explicit way.
+but for converting from smaller type to larger type, the implicit convert throws a compilation error because it might lose data. we have to convert it in an explicit way.
 
 implicit typing:
 When we use 'var' keyword instead of a type name, we are using implicit typing. it is required somewhere like where we use LINQ.
@@ -76,7 +76,7 @@ When we use 'var' keyword instead of a type name, we are using implicit typing. 
 # var a = 123;  // int
 
 
-2. explicit convertion:
+2. explicit conversion:
 using () for casting, and it is actually called explicit casting:
 
 # long a = 2150;
@@ -255,7 +255,7 @@ out keyword:
 
 params keyword:
 
-params parameter must be the last parameted in method:
+params parameter must be the last parameter in method:
 
 # Inc(5, 10, 15);
 
@@ -331,7 +331,7 @@ Abstract classes and methods:
 
 An abstract class cannot be new'ed. it's similar to interfaces, but a class can only inherit from one abstract class.
 
-An abstract method has not body. it is only be declared. The child class must override the absteract parent class's method. it's similar to virtual keyword, but the method signed with virtual keyword has body but abstract mehtod has not.
+An abstract method has no body. it is only be declared. The child class must override the abstract parent class's method. it's similar to virtual keyword, but the method signed with virtual keyword has body but the abstract method has not.
 
 #
 abstract class Parent 
@@ -375,14 +375,14 @@ Each IEnumerable like arrays, lists and so on, has an enumerator method that ret
 #
 
 Note:
-All extentions in LINQ are based on IEnumerable and IQueryable interfaces.
+All extensions in LINQ are based on IEnumerable and IQueryable interfaces.
 
 Note:
 foreach loop is used for the types that have IEnumerator interface. it uses GetEnumerator() method and Current property and MoveNext() itself.
 
 
 ------------------------------------
-Lambda, Named methods and anonymouse methods (delegate) for passing function argument:
+Lambda, Named methods and anonymous methods (delegate) for passing function argument:
 
 1. Lambda:
 # ... .Where(r => r > 10)   // Func<int, bool>
@@ -397,7 +397,7 @@ static MyMethod(int arg)
 }
 #
 
-3. Anonymouse method:
+3. Anonymous method:
 ... .Where(delegate (int r) { return r > 10; }
 
 
@@ -413,7 +413,7 @@ list.Add(2);
 #
 
 There are two problems:
-1- ArrayList is an untyped collectoin as seen above. So when we are doing a convertion, we have to be very mindful of the casting of the data to appropriate type.
+1- ArrayList is an untyped collection as seen above. So when we are doing a conversion, we have to be very mindful of the casting of the data to appropriate type.
 2- When we iterate that with foreach loop, Due to boxing and unboxing for value types. Because when the value types are added to the list, They will be boxed and saved as an object, And when they are retrieved, They will be unboxed from object type into a value type.
 
 =======================================================
@@ -432,7 +432,7 @@ class MyClass : IDisposable
 }
 #
 
-And when we are using that class, we should use `using` statement:
+So when we are using that class, we should use `using` statement:
 
 #
 using (var obj = new MyClass())
@@ -442,7 +442,7 @@ using (var obj = new MyClass())
 #
 
 
-Or we can use it in a try finally block:
+Alternatively, we can use it in a try finally block:
 
 #
 try
@@ -466,7 +466,7 @@ finally
 }
 #
 
-But this way is not good.
+However, this way is not good.
 
 We can set Max pool size and Connection Timeout in our connection string:
 
