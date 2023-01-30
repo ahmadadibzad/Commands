@@ -498,6 +498,18 @@ const found = arr.find(p => {return name === 'Ehsan'});
 
 found.name = 'Ahmad'; // `Ehsan` in arr will change to `Ahmad` directly.
 
+--------------------------------------------
+
+at:
+
+arr.at(index);  // returns element at index
+
+
+---------------------------------------------
+
+every:
+
+arr.every(a => a > 30);  // Checks to see if all the elements pass the predicate
 
 ------------------------------------------
 
