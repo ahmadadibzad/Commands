@@ -416,6 +416,31 @@ There are two problems:
 1- ArrayList is an untyped collection as seen above. So when we are doing a conversion, we have to be very mindful of the casting of the data to appropriate type.
 2- When we iterate that with foreach loop, Due to boxing and unboxing for value types. Because when the value types are added to the list, They will be boxed and saved as an object, And when they are retrieved, They will be unboxed from object type into a value type.
 
+---------------------------------
+Join two tables:
+
+1. Inner join:
+var query = (
+		from t1 in table1Entity.Where(...)
+		join t2 in table2Entity.Where(...)
+		on t2.FK equals t1.Id
+		select
+		{
+			...
+		}
+	);
+	
+2. Left join:
+var query = (
+		from t1 in table1Entity.Where(...)
+		join t2 in table2Entity.Where(...) into temp
+		on t2.FK equals t1.Id
+		select
+		{
+			...
+		}
+	);
+
 =======================================================
 ============== IDisposable, Memory ====================
 =======================================================
