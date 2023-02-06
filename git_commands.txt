@@ -36,6 +36,7 @@ git reset --mixed commit_id // removes commits newer than this commit and also u
 git reset --soft commit_id // removes commits newer than this commit but not unstage them
 
 git reset --hard commit_id // deletes all commits newer than this commit like --mixed, and also unmodify them like they never been existed!
+git reset --hard HEAD~1  // HEAD~1 means last commit
 
 git checkout -- page2.html // unchanges the file to the 'before commit' state
 
@@ -70,7 +71,10 @@ git checkout master
 
 git rm filename
 
-
+// Aborting merges
+When you pull changes from the server, Some conflicts may occur. In this situation, all of the server branch commits will be staged in your  local git and all merges will be submitted with your local git username. To resolve this problem, We have to abort merging.
+$ git merge --abort
+Once it done
 
 =========================================
 ============ Change Author ==============
