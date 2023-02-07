@@ -74,7 +74,7 @@ git rm filename
 // Aborting merges
 When you pull changes from the server, Some conflicts may occur. In this situation, all of the server branch commits will be staged in your  local git and all merges will be submitted with your local git username. To resolve this problem, We have to abort merging.
 $ git merge --abort
-Once it done
+Once it done, all merges will be aborted.
 
 =========================================
 ============ Change Author ==============
