@@ -492,7 +492,7 @@ find and findIndex:
 
 Be carefull, these es6 methods return a reference copy of array. so if we change the result array, the original array will changed too.
 
-const arr = [{name: 'Ehsan'}, {name: 'Zahra'}]
+const arr = [{name: 'Ehsan'}, {name: 'John'}]
 
 const found = arr.find(p => {return name === 'Ehsan'});
 
@@ -790,7 +790,7 @@ const person1 = {
 
 const person2 = Object.assign({}, person1);
 
-person1.name = 'Zahra' // person2.name is still Ehsan
+person1.name = 'John' // person2.name is still Ehsan
 
 but spread operator is recommended because it is shorter.
 
