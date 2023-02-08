@@ -362,7 +362,7 @@ Each IEnumerable like arrays, lists and so on, has an enumerator method that ret
 # IEnumerable<string> names = new List<string>
 {
 	"Ehsan",
-	"Zahra"
+	"John"
 };
 #
 
