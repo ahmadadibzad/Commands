@@ -482,7 +482,7 @@ finally
 	{
 		obj.Dispose();
 	}
-	catch(Extention ex)
+	catch(Extension ex)
 	{
 		// handle ex
 	}
