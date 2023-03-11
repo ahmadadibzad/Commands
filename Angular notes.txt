@@ -1,5 +1,8 @@
 # ng version
 
+To install angular cli:
+# npm install -g @angular/cli@latest  // @latest is optional
+
 # ng new myApp
 
 # ng serve   // To run the application
