@@ -30,5 +30,3 @@ there are two ways to import a css package installed by nodejs:
 ng generate component shared/header  // Creates a component in /src/app/shared/header path
 Or
 ng g component shared/header
-
-
