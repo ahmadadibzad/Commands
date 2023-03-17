@@ -499,4 +499,3 @@ However, this way is not good.
 We can set Max pool size and Connection Timeout in our connection string:
 
 # Max pool size=400;Connection Timeout=2;
-
