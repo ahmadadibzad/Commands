@@ -5,6 +5,5 @@ $ SELECT Convert(datetime, '07 Aug 2022 18:06')  // 2022-08-07 18:06:00.00
 To select year, month and date separately:
 $ SELECT 
 	YEAR(Created_On) AS year, 
-	MONTH(Created_On) AS month1,
+	MONTH(Created_On) AS month,
 FROM users
-
