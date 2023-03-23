@@ -7,6 +7,3 @@ $ SELECT
 	YEAR(Created_On) AS year, 
 	MONTH(Created_On) AS month,
 FROM users
-
-
-
