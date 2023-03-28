@@ -31,8 +31,3 @@ ng generate component shared/header  // Creates a component in /src/app/shared/h
 Or
 ng g component shared/header
 
-
-
-
-
-
