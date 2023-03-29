@@ -1,0 +1,14 @@
+To test a regex:
+$ /myRegex/.test(str)  // returns boolean
+
+'OR' operator:
+$ /search|search2/
+
+To find or extract a substring from a string:
+$ str.match(/myReg/)  // returns array of matches
+
+To search or extract a pattern more than once, you can use the global search flag: g
+$ /Repeated text/g
+
+We can use i flag to ignore case
+$ /Repeated Uppercase Text/gi
