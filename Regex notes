@@ -12,3 +12,38 @@ $ /Repeated text/g
 
 We can use i flag to ignore case
 $ /Repeated Uppercase Text/gi
+
+--------------------------------
+Wildcard (also called dot, or period):
+
+Sometimes you won't (or don't need to) know the exact characters in your patterns. Thinking of all words that match, say, a misspelling would take a long time. Luckily, you can save time using the wildcard character: .
+
+$ /hu./   --  matches hug, huh, hut, hum, ...
+
+$ /.un/   -- matches  run, sun, fun, pun, nun, bun, ...
+
+------------------------------
+
+Match Single Character with Multiple Possibilities
+
+You can search for a literal pattern with some flexibility with character classes. Character classes allow you to define a group of characters you wish to match by placing them inside square ([ and ]) brackets.
+
+For example, you want to match bag, big, and bug but not bog. You can create the regex /b[aiu]g/ to do this. The [aiu] is the character class that will only match the characters a, i, or u.
+
+$ 'big'.match(/b[aiu]g/)  --- ["big"]
+
+$ "Beware of bugs in the above code; I have only proved it correct, not tried it.".match(/[aeiou]/gi)   // Matches all the vowels
+
+-----------------------------
+
+Match Letters and Numbers of the Alphabet
+
+$ /[a-f]/gi  -- Only mathes A to F charachters
+
+$ /[a-z]/gi  -- Mathes all the letters in a string
+
+$ /[0-9]/gi
+
+$ /[2-6h-s]/gi
+
+-----------------------------
