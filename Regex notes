@@ -35,7 +35,6 @@ $ 'big'.match(/b[aiu]g/)  --- ["big"]
 $ "Beware of bugs in the above code; I have only proved it correct, not tried it.".match(/[aeiou]/gi)   // Matches all the vowels
 
 -----------------------------
-
 Match Letters and Numbers of the Alphabet
 
 $ /[a-f]/gi  -- Only mathes A to F charachters
@@ -47,3 +46,10 @@ $ /[0-9]/gi
 $ /[2-6h-s]/gi
 
 -----------------------------
+Not (^) operator
+
+$ /[^0-9]/gi  // Matches all characters that are not a number
+
+$ /[^aeiou]/gi  // Not vowels
+
+$ /[^0-9aeiou]/gi
