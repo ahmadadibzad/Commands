@@ -1,3 +1,5 @@
+test() and match()
+
 To test a regex:
 $ /myRegex/.test(str)  // returns boolean
 
@@ -25,7 +27,6 @@ $ /hu./   --  matches hug, huh, hut, hum, ...
 $ /.un/   -- matches  run, sun, fun, pun, nun, bun, ...
 
 ------------------------------
-
 Match Single Character with Multiple Possibilities
 
 You can search for a literal pattern with some flexibility with character classes. Character classes allow you to define a group of characters you wish to match by placing them inside square ([ and ]) brackets.
