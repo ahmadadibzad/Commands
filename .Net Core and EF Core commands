@@ -1,0 +1,12 @@
+EF Core:
+
+Migration:
+
+To create a new migration:
+$ Add-Migration <name>
+
+To remove the latest migration:
+$ Remove-Migration
+
+To affecting the latest migration to the database:
+$ Update-Database
