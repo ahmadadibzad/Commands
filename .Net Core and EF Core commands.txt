@@ -10,3 +10,5 @@ $ Remove-Migration
 
 To affecting the latest migration to the database:
 $ Update-Database
+
+
