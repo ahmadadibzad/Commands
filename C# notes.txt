@@ -499,3 +499,23 @@ However, this way is not good.
 We can set Max pool size and Connection Timeout in our connection string:
 
 # Max pool size=400;Connection Timeout=2;
+
+
+================================================
+============== New Features ====================
+================================================
+
+If result is null, assign a default value:
+
+Old way:
+#
+var lastRecord = await _context.MyEntity.OrderByDescending(r => r.SomeProp).FirstOrDefaultAsync();
+if (lastRecord == null)
+{
+	lastRecord = new MyEntity();
+}
+#
+
+new way:
+var lastRecord = await _context.MyEntity.OrderByDescending(r => r.SomeProp).FirstOrDefaultAsync();
+lastRecord ??= new RecordOrdersEntity { LastTime = DateTime.Now };
