@@ -36,11 +36,11 @@ if we add two numbers of different types, the result will convert to larger type
 note:
 Same as Java, the result of adding two values of short/byte type will be Int32! (not Int16/byte) and we have to cast the result to short/byte if we want.
 
-byte + byte = int
-short + short = int
-short + byte = int
-int + short = int
-int + long = long
+# byte + byte = int
+# short + short = int
+# short + byte = int
+# int + short = int
+# int + long = long
 
 https://www.codeproject.com/Questions/1234495/Difference-between-adding-two-short-variables-and
 
