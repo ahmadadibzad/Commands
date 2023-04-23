@@ -519,6 +519,3 @@ if (lastRecord == null)
 new way:
 var lastRecord = await _context.MyEntity.OrderByDescending(r => r.SomeProp).FirstOrDefaultAsync();
 lastRecord ??= new RecordOrdersEntity { LastTime = DateTime.Now };
-
-
-
