@@ -383,7 +383,6 @@ All extensions in LINQ are based on IEnumerable and IQueryable interfaces.
 Note:
 foreach loop is used for the types that have IEnumerator interface. it uses GetEnumerator() method and Current property and MoveNext() itself.
 
-
 ------------------------------------
 Lambda, Named methods and anonymous methods (delegate) for passing function argument:
 
