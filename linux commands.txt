@@ -97,7 +97,7 @@ add the user below admin user like below syntax.
 # user_name ALL=(ALL)  ALL
 
 
-
+uptime  // Shows the system'm up time
 
 
 ls // list of files in current directory
@@ -196,9 +196,9 @@ lib, lib64  // linux libraries
 sys  // system files, like system32 in windows
 
 
-home  // means /home path
+home  // means /home path. This is the user's home directory default
 
-~  // means /home/thisUser path
+~  // means /home/thisUser path. This symbol represents a user’s home directory in Linux
 
 /  // means root path
 
@@ -209,6 +209,10 @@ cd <path> // goes to specific path
 ..  // previous directory
 
 .  // current directory
+
+echo Hello  // prints Hello
+
+echo -n Hello
 
 echo $HOME // prints ~ path
 
