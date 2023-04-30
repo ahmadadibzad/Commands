@@ -172,7 +172,10 @@ string.Join()
 It's similar to Concat, but we have to pass a character to combine separated strings. (we can use " ")
 
 
+-----------------------------------
+myQueriable.ToQueryString()
 
+Gives SQL convert of a query
 
 =====================================
 ========== Referecne Types===========
