@@ -177,6 +177,14 @@ myQueriable.ToQueryString()
 
 Gives SQL convert of a query
 
+
+----------------------------------
+Reverse a string:
+
+char[] charArray = myString.ToCharArray();
+Array.Reverse(charArray);
+return new string(charArray);
+
 =====================================
 ========== Referecne Types===========
 =====================================
