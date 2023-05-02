@@ -99,6 +99,8 @@ add the user below admin user like below syntax.
 
 uptime  // Shows the system'm up time
 
+type <command>  // Shows the type of a command
+
 
 ls // list of files in current directory
 
