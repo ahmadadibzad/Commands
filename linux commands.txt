@@ -101,6 +101,7 @@ uptime  // Shows the system'm up time
 
 type <command>  // Shows the type of a command
 
+pwd  // Prints the current working directory path
 
 ls // list of files in current directory
 
