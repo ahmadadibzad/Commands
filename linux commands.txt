@@ -333,3 +333,6 @@ tar cjf <file>   // create tbz file
 tar xvf  <filename>  // extract tar file
 
 tar tvf  <filename>  // show tar file contenr without extract that.
+
+
+
