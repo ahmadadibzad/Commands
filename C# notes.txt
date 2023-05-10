@@ -279,14 +279,14 @@ params parameter must be the last parameter in method:
 ---------------------------------------------
 Garbage collection:
 
-GC.collect();   // Removes all unused objects from memory.
+# GC.collect();   // Removes all unused objects from memory.
 
 
 ---------------------------------------------
 Enumerable.Range
 
-string json = JsonConvert.SerializeObject(dto);
-var list = Enumerable.Range(1, count).Select(_ => JsonConvert.DeserializeObject<dto>(json)).ToList();   // Copy a dto to a list of dtos
+# string json = JsonConvert.SerializeObject(dto);
+# var list = Enumerable.Range(1, count).Select(_ => JsonConvert.DeserializeObject<dto>(json)).ToList();   // Copy a dto to a list of dtos
 
 =======================================================
 ========== Classes, Interface, Struct =================
