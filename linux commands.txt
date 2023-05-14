@@ -315,12 +315,9 @@ to solve this, use -p:
 
 cp -p <filename> <parent/newname>
 
-
-
 =======================================================
 ================ tar, extract =========================
 =======================================================
-
 
 tar cvf  <filename>  // create tar file in current dir. v means verbosely. it shows all files have been created.
 
