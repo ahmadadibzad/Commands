@@ -331,5 +331,3 @@ tar xvf  <filename>  // extract tar file
 
 tar tvf  <filename>  // show tar file contenr without extract that.
 
-
-
