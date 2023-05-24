@@ -57,5 +57,3 @@ $ /[^0-9]/gi  // Matches all characters that are not a number
 $ /[^aeiou]/gi  // Not vowels
 
 $ /[^0-9aeiou]/gi
-
-
