@@ -50,6 +50,7 @@ $ /[0-9]/gi
 $ /[2-6h-s]/gi
 
 -----------------------------
+
 Not (^) operator
 
 $ /[^0-9]/gi  // Matches all characters that are not a number
@@ -57,3 +58,5 @@ $ /[^0-9]/gi  // Matches all characters that are not a number
 $ /[^aeiou]/gi  // Not vowels
 
 $ /[^0-9aeiou]/gi
+
+
