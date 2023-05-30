@@ -1131,3 +1131,11 @@ c instanceof myClass // true
 we can add parentheses:
 
 c instanceof(myClass) // true
+
+
+==========================================
+
+Best practices:
+
+Get difference between two dates:
+$ parseInt(Math.abs(hotelFullDetails.checkout - hotelFullDetails.checkin) / (1000 * 60 * 60 * 24))
