@@ -232,8 +232,6 @@ ls  -al  // show hidden files
 ls  -lF  // classify, show file and directory formats??
 
 
-
-
 ==============================================
 ================== Persmittions ==============
 ==============================================
@@ -264,7 +262,6 @@ searching file names:
 
 [a-z]
 
-
 =============================================
 ============== cp, mv, rm ===================
 =============================================
@@ -287,7 +284,6 @@ to rename a file or directory, we can just use mv with destination command:
 mv <curr> <newname>
 
 just like cp
-
 
 
 rm <filename>   // removes file
@@ -330,4 +326,3 @@ tar cjf <file>   // create tbz file
 tar xvf  <filename>  // extract tar file
 
 tar tvf  <filename>  // show tar file contenr without extract that.
-
