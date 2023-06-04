@@ -1,0 +1,81 @@
+There are two ways to inherit from parents:
+
+1: inherit command:
+$ font-family: inherit;
+
+2: Using combinators:
+
+#id h1 {
+    font-family: ...
+}
+
+Note: 
+combinators have higher specifity:
+
+#id h1 {
+    font-family: 'Tahoma'
+}
+
+h1 {
+    font-family: Arial
+}
+
+The font-family of Tahoma will be set because combinators create a higher specifity than just the h1. In other words, the rules with more information wins over rules with less information.
+
+-----------------------------------------------
+
+All kinds of combinators:
+
+1. white space
+We've just seen above.
+
+2. Adjacent sibling (+)
+
+Example:
+h2 + p
+Assigns to all p tags that directly follow an h2 tag.
+
+<h2></h2>
+<p></p>  // this tag
+<h2></h2>
+<h3></h3>
+<p></p>
+<h2></h2>
+<p></p> // and this tag
+
+rules:
+- Elements share the same parent
+- The second element comes immediately after the first element.
+
+3. General sibling (~):
+Just the same as adjacent sibling, but the second tag doesn't have to be directly in front of the first tag
+
+example:
+h2 ~ p
+
+<h2></h2>
+<p></p>  // this tag
+<h2></h2>
+<h3></h3>
+<p></p> // and this tag
+<h2></h2>
+<p></p> // and this tag
+
+rules:
+- Elements share the same parent
+- The second element comes after the first element.
+
+4. Child (>):
+Assigns to the direct child of an element.
+
+<div>
+	<h2></h2>
+	<p></p> // this tag
+	<article>
+		<p></p>
+	</article>
+	<p></p> // and this tag
+</div>
+
+rule:
+- The second element is a direct child of the first element.
