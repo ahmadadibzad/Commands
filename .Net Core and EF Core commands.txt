@@ -11,4 +11,8 @@ $ Remove-Migration
 To affecting the latest migration to the database:
 $ Update-Database
 
+To rollback to a migration:
+$ Update-Database -Migration <migration name>
 
+To rollback all migrations:
+$ Update-Database 0
