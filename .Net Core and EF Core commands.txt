@@ -16,3 +16,5 @@ $ Update-Database -Migration <migration name>
 
 To rollback all migrations:
 $ Update-Database 0
+
+
