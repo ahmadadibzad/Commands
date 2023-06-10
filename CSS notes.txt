@@ -96,5 +96,3 @@ border: 1px solid black;
 margin: 5px (top) 10px (right) 5px (bottom) 10px (left)
 margin: 5px (top & bottom) 10px (left & right)
 margin: 10px
-
-
