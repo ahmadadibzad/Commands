@@ -13,5 +13,3 @@ To extract first parts of a string:
 
 $ DECLARE @URI VARCHAR(100) = '1-1-1N-11Hd-C-1cPU'
 $ SELECT LEFT(@URI, CHARINDEX('-', @URI, CHARINDEX('-' , @URI, CHARINDEX('-', @URI,CHARINDEX('-', @URI)+1)+1)+1)-1) as uri  --1-1-1N-11Hd first four parts of the string
-
-
