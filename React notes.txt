@@ -1,0 +1,2 @@
+To create a react app:
+$ npx create-react-app@latest project-name
