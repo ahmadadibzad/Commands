@@ -1,2 +1,5 @@
 To create a react app:
 $ npx create-react-app@latest project-name
+
+React does not render true, false, and null values:
+{ true }  // nothing will be printed
