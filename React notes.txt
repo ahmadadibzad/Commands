@@ -3,3 +3,22 @@ $ npx create-react-app@latest project-name
 
 React does not render true, false, and null values:
 { true }  // nothing will be printed
+
+
+=======================================
+React fragment: <></>
+
+React fragment lets us group elements without any effect in HTML DOM. Since all elements in a component in React must be in a root element, we need to group all elements in a component in a root element. But it may affect CSS. So that's the case that we can use React fragment:
+
+<>
+	<h2></h2>
+	<p></p>
+</>
+
+Sometimes, we need to set a key for the React fragment. For example, in a list. In this case, we can use this:
+
+<React.Fragment key='myKey'>
+.
+.
+.
+</React.Fragment>
