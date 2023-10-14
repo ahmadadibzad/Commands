@@ -31,3 +31,15 @@ ng generate component shared/header  // Creates a component in /src/app/shared/h
 Or
 ng g component shared/header
 
+
+====================================
+============= Pipes ================
+====================================
+
+# ng generate pipe [name]
+
+We use pipes in HTML with a | character:
+{{ dateString | date }}
+
+If you want to use pipes in a directive like ngIf, you have to put the whole of the value into parentheses:
+# <div *ngIf="(miles | convert: 'km') > 10">  // If the result of pipe is greater than 10
