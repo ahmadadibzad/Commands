@@ -671,6 +671,11 @@ WeakMap
 
 
 
+----------------------------
+
+Create a distinct array from an array of objects:
+
+const newArr = [...new Set(oldArr)];
 
 =====================================================
 =============== undefined vs null ===================
