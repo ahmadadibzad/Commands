@@ -1,4 +1,4 @@
-objets and arrays are not comparisonable with == and === equal signs!
+objects and arrays are not comparisonable with == and === equal signs!
 
 const person1 = {name: 'Ahmad'}
 
@@ -543,6 +543,12 @@ const sorted = arr.sort((a, b) => {
 
 ------------------------------------------
 reverse
+
+
+
+------------------------------------------
+toReversed
+
 
 
 -------------------------------------------
