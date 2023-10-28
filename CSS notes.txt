@@ -80,11 +80,17 @@ Assigns to the direct child of an element.
 rule:
 - The second element is a direct child of the first element.
 
+
+=============================
+Box model in CSS:
+
+Every element is interpreted as such a box in CSS: the content, the padding, the border, and the margin.
+
 =============================
 
 Margin Collapsing:
 
-If you got two elements next to each other, then margins between them are actually collapsed to one margin. The bigger margin wins.
+If you have two elements next to each other, then the margins between them are actually collapsed to one margin. The bigger margin wins.
 
 
 =============================
