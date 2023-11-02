@@ -43,3 +43,24 @@ We use pipes in HTML with a | character:
 
 If you want to use pipes in a directive like ngIf, you have to put the whole of the value into parentheses:
 # <div *ngIf="(miles | convert: 'km') > 10">  // If the result of pipe is greater than 10
+
+
+====================================
+=========== Directives =============
+====================================
+
+#ng generate directive [name]
+
+---------------------------------
+Star * directives:
+The * directives change the structure of our HTML (create or remove) like *ngIf, *ngFor ...
+We can only use one structural directive in an element. If we use more than one structural directive in an element, Angular will give us an error: "Can't have multiple template bindings on one element. Use only one attribute prefixed with *". To avoid this error, we can use ng-container instead. The ng-container doesn't actually create an HTML element, so we can apply extra structural directives:
+
+#
+<ul>
+	<ng-container *ngFor="...">
+		<li *ngIf="...">	
+		</li>
+	</ng-container>
+</ul>
+#
