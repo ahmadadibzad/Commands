@@ -27,9 +27,9 @@ there are two ways to import a css package installed by nodejs:
 ============= Components ===========
 ====================================
 
-ng generate component shared/header  // Creates a component in /src/app/shared/header path
+# ng generate component shared/header  // Creates a component in /src/app/shared/header path
 Or
-ng g component shared/header
+# ng g component shared/header
 
 
 ====================================
@@ -64,3 +64,29 @@ We can only use one structural directive in an element. If we use more than one 
 	</ng-container>
 </ul>
 #
+
+---------------------------------------
+
+To create a custom directive, the best practice is:
+
+#
+@Input('myDirective') set backgroundColor(color: string) {
+	this.element.nativeElement.style.backgroundColor = color;
+}
+#
+
+The "backgroundColor" is an optional name for the setter function. We can directly use the name of the directive class instead:
+
+#
+@Input() set myDirective(color: string) {
+	this.element.nativeElement.style.backgroundColor = color;
+}
+#
+
+Or
+
+
+and in HTML:
+
+# <div [myDirective]="'red'">Hello</div>
+
