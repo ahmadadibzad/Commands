@@ -3,6 +3,8 @@ There are two ways to inherit from parents:
 1: inherit command:
 $ font-family: inherit;
 
+The element inherits the style from the first parent.
+
 2: Using combinators:
 
 #id h1 {
@@ -10,7 +12,7 @@ $ font-family: inherit;
 }
 
 Note: 
-combinators have higher specifity:
+combinators have higher specificity:
 
 #id h1 {
     font-family: 'Tahoma'
@@ -20,7 +22,7 @@ h1 {
     font-family: Arial
 }
 
-The font-family of Tahoma will be set because combinators create a higher specifity than just the h1. In other words, the rules with more information wins over rules with less information.
+The font-family of Tahoma will be set because combinators create a higher specificity than just the h1. In other words, the rules with more information win over those without.
 
 -----------------------------------------------
 
