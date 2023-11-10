@@ -90,3 +90,11 @@ and in HTML:
 
 # <div [myDirective]="'red'">Hello</div>
 
+
+====================================
+============= Modules ==============
+====================================
+
+Angular gets started with main.ts file. We pass a module as a bootstraper to it. Inside of the module file, we define a root component and Angular starts the app with it.
+
+Angular uses Components to build webpages and uses Modules to bundle different pieces into packages basically.
