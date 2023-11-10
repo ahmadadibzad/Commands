@@ -1,6 +1,9 @@
 To create a react app:
 $ npx create-react-app@latest project-name
 
+or we can use vite:
+$ npm create vite@latest
+
 React does not render true, false, and null values:
 { true }  // nothing will be printed
 
@@ -22,3 +25,17 @@ Sometimes, we need to set a key for the React fragment. For example, in a list. 
 .
 .
 </React.Fragment>
+
+
+==========================================
+
+When we are mapping arrays in jsx, It's better to set key for each element:
+
+
+<ul>
+  {
+    tasks.map(task => (
+      <li key={task.id}>{task.title}</li>
+    ))
+  }
+</ul>
