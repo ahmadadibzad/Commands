@@ -29,7 +29,7 @@ Sometimes, we need to set a key for the React fragment. For example, in a list. 
 
 ==========================================
 
-When we are mapping arrays in jsx, It's better to set key for each element:
+When we are mapping arrays in jsx, It's better to set the key for each element:
 
 
 <ul>
@@ -39,3 +39,18 @@ When we are mapping arrays in jsx, It's better to set key for each element:
     ))
   }
 </ul>
+
+
+==========================================
+
+Calling event handler function: 
+We can call the handler function directly, or we can define a function that returns the handler function and passes in the event object.
+
+const [task, setTask] = useState('');
+const handleTaskChange = e => {
+    setTask(e.target.value);
+}
+
+<input type="text" onChange={e => handleTaskChange(e)} />
+OR
+<input type="text" onChange={handleTaskChange} />
