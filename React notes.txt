@@ -54,3 +54,11 @@ const handleTaskChange = e => {
 <input type="text" onChange={e => handleTaskChange(e)} />
 OR
 <input type="text" onChange={handleTaskChange} />
+
+
+==========================================
+
+React StrictMode is a tool provided by React that helps developers write better quallity code by highlighting potential problems during development. For example, it checks for:
+- Not supported or deprecated React APIs and components.
+- Unsafe state updates
+- Potentially unnecessary re-renders.
