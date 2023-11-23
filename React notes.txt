@@ -62,3 +62,28 @@ React StrictMode is a tool provided by React that helps developers write better 
 - Not supported or deprecated React APIs and components.
 - Unsafe state updates
 - Potentially unnecessary re-renders.
+
+
+==========================================
+=============== Routing ==================
+==========================================
+
+To enable routing in Reactjs, first, we need to install react router dom package:
+
+$ npm i react-router-dom
+
+and then, add the following tag to the main.jsx:
+
+<BrowserRouter>
+    <App>
+</BrowserRouter>
+
+Now, we have to add routing components where we want to define the routing. for example:
+
+<Routes>
+    <Route path='/' element={<MovieList type="popular" title="Popular" />} />
+    <Route path='/top-rated' element={<MovieList type="top_rated" title="top Rated" />} />
+    <Route path='/upcoming' element={<MovieList type="upcoming" title="Upcoming" />} />
+</Routes>
+
+In this example, we defined three routes. For the path of '/' the MovieList component will be run with the parameters we passed.
