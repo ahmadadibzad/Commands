@@ -10,6 +10,10 @@ React does not render true, false, and null values:
 A Reactjs package to import SVG files:
 $ npm i vite-plugin-svgr
 
+To solve the error:
+Uncaught SyntaxError: The requested module '/src/components/DarkMode/Moon.svg?import' does not provide an export named 'ReactComponent'
+
+
 =======================================
 React fragment: <></>
 
