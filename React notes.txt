@@ -64,7 +64,7 @@ OR
 
 ==========================================
 
-React StrictMode is a tool provided by React that helps developers write better quallity code by highlighting potential problems during development. For example, it checks for:
+React StrictMode is a tool provided by React that helps developers write better-quality code by highlighting potential problems during development. For example, it checks for:
 - Not supported or deprecated React APIs and components.
 - Unsafe state updates
 - Potentially unnecessary re-renders.
@@ -93,3 +93,5 @@ Now, we have to add routing components where we want to define the routing. for 
 </Routes>
 
 In this example, we defined three routes. For the path of '/' the MovieList component will be run with the parameters we passed.
+
+After that, we should replace <a> tags with Link or NavLink components. For example, <a href="/cart">Cart</a> must be replaced with <Link to='/cart'></Link>
