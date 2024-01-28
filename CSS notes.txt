@@ -104,3 +104,22 @@ border: 1px solid black;
 margin: 5px (top) 10px (right) 5px (bottom) 10px (left)
 margin: 5px (top & bottom) 10px (left & right)
 margin: 10px
+
+
+============================
+
+width and height:
+
+width:
+Block level elements take a full available width by default. (width: 100%)
+
+height:
+If you want to set the full available height for an element, you need to do it for all the parents that element has. for example, if an h1 element has parents like this:
+
+<html>
+   <body>
+      <main>
+         <section>
+            <h1>
+
+you must set height: 100% for all the parents: section, main, body and specially html tag.
