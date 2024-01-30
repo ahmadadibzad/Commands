@@ -123,3 +123,31 @@ If you want to set the full available height for an element, you need to do it f
             <h1>
 
 you must set height: 100% for all the parents: section, main, body and specially html tag.
+
+
+==========================
+
+box-sizing:
+
+border-box vs content-box
+
+When we set box-sizing to content-box, all the width and height we've set will be applied to the box's content, and border, padding, and margin will not be included. But when we set it to border-box, the width and height will be applied to the content, but the border, padding, and margin we've set are subtracted from it. For example:
+
+#tag1 {
+   width: 100%;
+   height: 200px;
+   padding: 5px;
+   border: 1px solid;
+   margin: 10px;
+   box-sizing: ...
+}
+
+If we set the box-sizing to content-box, the final width and height will be like this:
+
+content height: 200 + 5 + 1 + 10 = 216px
+
+but, when we set it to border-box:
+
+content height: 200 - 5 - 1 - 10 = 184px
+
+We should use the universal selector * to reset all elements to `border-box`. If we use the `body` tag, it won't be applied to children's tags because some browsers set the default display to block, and box-sizing won't be affected.
