@@ -4,6 +4,9 @@ $ npx create-react-app@latest project-name
 or we can use vite:
 $ npm create vite@latest
 
+To update an existing project:
+$ npm update --save
+
 React does not render true, false, and null values:
 { true }  // nothing will be printed
 
