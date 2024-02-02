@@ -151,3 +151,17 @@ but, when we set it to border-box:
 content height: 200 - 5 - 1 - 10 = 184px
 
 We should use the universal selector * to reset all elements to `border-box`. If we use the `body` tag, it won't be applied to children's tags because some browsers set the default display to block, and box-sizing won't be affected.
+
+
+=========================
+
+Display property:
+
+inline:
+Elements go next to each other and take as much width as they need. Note that you can't set the width and height of an element with an inline display.
+
+block:
+The element behaves as a block and takes up the full available width. The next element goes to the next line.
+
+inline-block:
+These elements behave just like an inline display, but the difference is you can now set the width and height of the elements. This is useful when you want to create a horizontal nav bar.
