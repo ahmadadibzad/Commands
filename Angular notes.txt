@@ -9,11 +9,24 @@ To update cli version:
 
 # ng new myApp
 
-# ng serve   // To run the application
+We can use --routing flag when we want to include routing inside of the application:
 
+# ng new myApp --routing
+
+To run the application
+# ng serve
+
+or we can use npm command which defined in package.json file:
+
+# npm start
+
+
+====================================
+============= Styling ==============
+====================================
+
+There are two ways to import a css package installed by nodejs:
 # npm install --save primeflex   // A css grid framework
-
-there are two ways to import a css package installed by nodejs:
 
 1. Adding relative path to the styles.scss file:
 @import '~primeflex/primeflex.css'  // This means import from node_modules folder
@@ -23,13 +36,20 @@ there are two ways to import a css package installed by nodejs:
 # "/node_modules/primeflex/primeflex.css"
 
 
+--------------
+When we want to affect the styling of our host element <app-root> in the app.component.css file, the app-root selector will not work because it doesn't exist in the app.component.html file, so Angular can't find it. To solve this problem, we have to use a very special selector called :host:
+
+:host {
+  ...
+}
+
 ====================================
 ============= Components ===========
 ====================================
 
 # ng generate component shared/header  // Creates a component in /src/app/shared/header path
 Or
-# ng g component shared/header
+# ng g c shared/header
 
 
 ====================================
@@ -95,6 +115,19 @@ and in HTML:
 ============= Modules ==============
 ====================================
 
-Angular gets started with main.ts file. We pass a module as a bootstraper to it. Inside of the module file, we define a root component and Angular starts the app with it.
+Angular gets started with the main.ts file. We pass a module as a bootstrapper to it. Inside the module file, we define a root component, and Angular starts the app with it.
 
-Angular uses Components to build webpages and uses Modules to bundle different pieces into packages basically.
+Angular uses components to build webpages and uses modules to bundle different pieces into packages basically.
+
+To create a module:
+# ng generate module [name]
+Or
+# ng g m [name]
+
+We can add --routing flag to create a routed module:
+# ng generate module [name] --routing
+
+When we want to use a component that is defined in a child module, we need to import the whole child module to the `app.module` at first. There are two steps to take:
+1. export the component we want to use outside in the exports array of the module.
+2. Import the entire child module to the `app.module` file.
+
