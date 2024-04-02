@@ -127,7 +127,58 @@ Or
 We can add --routing flag to create a routed module:
 # ng generate module [name] --routing
 
-When we want to use a component that is defined in a child module, we need to import the whole child module to the `app.module` at first. There are two steps to take:
+When we want to use a component that is defined in a child module, we need to import the whole child module to the app.module at first. There are two steps to take:
 1. export the component we want to use outside in the exports array of the module.
 2. Import the entire child module to the `app.module` file.
 
+
+====================================
+============= Routing ==============
+====================================
+
+When we want to define a special routing for a component, we don't need to export it in the module file; instead, we can define a route inside the MyComponent-routing.module file:
+
+#
+const routes: Routes = [
+  {path: 'myPath', component: MyComponent}
+];
+#
+
+---------------------------------------
+
+Define Home and NotFound routes:
+
+There's no need to define a new module. Just go to the app-routing.module.ts file and add your objects to the routes array like this:
+
+# { path: '', component: HomeComponent },  // for home page
+# { path: '**', component: NotFoundComponent },  // for not found page
+
+---------------------------------------
+
+Reordering the routes list:
+
+We can change the order of the routes that are defined everywhere in the project. Just go to the app.module.ts file, in the imports array, and change the order of the modules. It's better to move AppRoutingModule to the end when you have defined a `NotFound` route in it.
+
+---------------------------------------
+
+router-outlet tag:
+
+<router-outlet></router-outlet> tag is used to load the content based on the current route. For example, if the current route is localhost:4200/path1, Angular will replace the router-outlet tag with the content of the component for the path1 route that is defined in module files.
+
+---------------------------------------
+
+routerLink attribute:
+
+Imagine we have a navigation link <a href="link1">Link1</a>. When we click on it, the entire application will be reloaded to load the content of that link. To prevent this, we can use the routerLink attribute instead of the href attribute:
+
+# <a routerLink="link1">Link1</a>
+
+In this way, Angular automatically updates the content. So only the content of that route will be changed, and the application won't be reloaded.
+
+---------------------------------------
+
+routerLinkActive
+
+This attribute is used to apply a CSS class when that link is active:
+
+# <a routerLink="/link1" routerLinkActive="myCssClass">Link1</a>
