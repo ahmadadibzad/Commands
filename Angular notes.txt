@@ -182,3 +182,21 @@ routerLinkActive
 This attribute is used to apply a CSS class when that link is active:
 
 # <a routerLink="/link1" routerLinkActive="myCssClass">Link1</a>
+
+---------------------------------------
+
+Lazy loading:
+
+All the components in the application use eager loading, which means all the modules are loaded at the start, whether their routes have been visited by the user or not. It takes a lot of time and space. The lazy loading technique is a good way to reduce the size of files at the start. So here are the steps to reach that:
+
+1. Remove the module we want to make a lazy load from the `app.module` file.
+2. Define a new route for that module in the `app-routing.module` file with the `loadChildren` property like the following:
+
+#
+{
+    path: 'modulePath', loadChildren: () => import('./path/myModule.module')
+      .then(m => m.MyModule)
+}
+#
+
+3. Remove or change the path you defined before in the `myModule-routing.module` to prevent having a crazy path.
