@@ -177,11 +177,64 @@ In this way, Angular automatically updates the content. So only the content of t
 
 ---------------------------------------
 
+Combining array of routes:
+
+We can use the routerLink property to combine an array of routes. Some of them might be virtual routes and not match to any real component:
+
+# <a [routerLink]="['./myComponent', 'foo', 'bar']">Link to somewhere</a>
+
+Result: http://localhost/.../myComponent/foo/bar
+
+---------------------------------------
+
 routerLinkActive
 
 This attribute is used to apply a CSS class when that link is active:
 
 # <a routerLink="/link1" routerLinkActive="myCssClass">Link1</a>
+
+
+---------------------------------------
+
+routerLinkActiveOptions
+
+If we have child routes and have made one of them the default route, the routerLinkActive property will apply a CSS class whenever we are at every address that contains the parent route. To solve this, we can add one more property called routerLinkActiveOptions:
+
+# [routerLinkActiveOptions]="{ exact: true }"
+
+Example:
+#
+            <a 
+                routerLink="./" 
+                routerLinkActive="active" 
+                [routerLinkActiveOptions]="{ exact: true }">Child1
+	    </a>
+#
+
+---------------------------------------
+
+Defining child routes:
+
+If our component has some subcomponents, we can create child navigation in the parent-routing.module file like this:
+
+const routes: Routes = [
+  {
+    path: 'parent', component: ParentComponent,  // --> http://localhost/parent
+    children: [
+      { path: './', component: Child1Component },  // --> http://localhost/parent
+      { path: './child2', component: Child2Component },  // --> http://localhost/parent/child2  
+      { path: './child3', component: Child3Component },  // --> http://localhost/parent/child3
+    ]
+  }
+];
+
+
+In this example, we didn't define any route for child1, so it will be the default route. We can define a route for that if we want.
+
+Note:
+Relative pathes:
+"./" This means the current route that we are on.
+"./sub-route" This means current-route/sub-route
 
 ---------------------------------------
 
