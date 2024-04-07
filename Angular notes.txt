@@ -253,3 +253,57 @@ All the components in the application use eager loading, which means all the mod
 #
 
 3. Remove or change the path you defined before in the `myModule-routing.module` to prevent having a crazy path.
+
+
+====================================
+============= Services =============
+====================================
+
+A service in Angular is a class where you create your HTTP requests and work with APIs.
+
+To create a service:
+# ng generate service myService
+
+Notice that we don't have to add the word "service" at the end of the name, because Angular automatically adds it at the end.
+Angular automatically creates an instance of services to use in components, so we don't need to create instances and write codes like new MyService(). See dependency injection section.
+
+
+================================================
+============= Dependency Injection =============
+================================================
+
+Components, services, and some other things in Angular ask for dependencies, rather than creating them directly. Components could create an instance of those things themselves. Instead, we can pass them in to the constructor, and Angular will create a new instance of those automatically:
+
+#
+constructor(private instance1: AnInjectableClass, private instance2: AnotherInjectableClass) {
+
+}
+#
+
+The order of dependencies doesn't matter. If you change the order of dependencies, Angular will handle it automatically.
+
+To make a class injectable, we must add the @Injectable decorator at the top of the class:
+@Injectable
+export class MyClass {
+
+}
+
+Dependency injection makes testing easier.
+
+=======================================
+============= XSS Attacks =============
+=======================================
+
+XSS attacks and escaping HTML:
+We can use the [innerHTML] property on tags to prevent any XSS attack. If we have some HTML strings and want to append them to our HTML tags, we have to use this property rather than using {{ }}.
+
+For example, if we have an html string like this:
+# let myHtmlString = `<img src=javascript:alert('XSS')>`;
+
+And want to show it in the view:
+
+# <div [innerHTML]="myHtmlString"></div>
+
+Angular automatically scapes HTML:  
+
+# <div><img src="unsafe:javascript:alert('XSS')"></div>
