@@ -165,3 +165,14 @@ The element behaves as a block and takes up the full available width. The next e
 
 inline-block:
 These elements behave just like an inline display, but the difference is you can now set the width and height of the elements. This is useful when you want to create a horizontal nav bar.
+
+
+=========================
+
+Grid:
+
+When we want to create image galleries or something like this, grid system can be more useful than flex box.
+
+{
+   display: grid;
+}
