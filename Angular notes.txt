@@ -307,3 +307,25 @@ And want to show it in the view:
 Angular automatically scapes HTML:  
 
 # <div><img src="unsafe:javascript:alert('XSS')"></div>
+
+=======================================
+============= XSS Attacks =============
+=======================================
+
+Reactive Forms:
+
+We can use `FormGroup` and `FormClass` to define some form fields in the component class:
+
+#
+cardForm = new FormGroup({
+    myField: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(5)
+    ])
+  })
+#
+
+And we use `formControlName` property to bind an HTML field to our variable in the class:
+
+# <input type="text" class="input" formControlName="myField">
