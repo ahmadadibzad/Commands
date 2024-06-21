@@ -43,6 +43,18 @@ When we want to affect the styling of our host element <app-root> in the app.com
   ...
 }
 
+--------------
+Install tailwind in an Angular project:
+
+Run this command to install the latest version of Tailwind CSS:
+# npm i -D tailwindcss@latest
+
+# npx tailwind init
+
+Inside of tailwind.config.js:
+
+# content: ['./src/**/*.{html,ts}'],
+
 ====================================
 ============= Components ===========
 ====================================
