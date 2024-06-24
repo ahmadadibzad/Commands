@@ -143,6 +143,12 @@ When we want to use a component that is defined in a child module, we need to im
 1. export the component we want to use outside in the exports array of the module.
 2. Import the entire child module to the `app.module` file.
 
+====================================
+============= Classes ==============
+====================================
+
+To create a class:
+# ng generate class [name]
 
 ====================================
 ============= Routing ==============
@@ -321,7 +327,7 @@ Angular automatically scapes HTML:
 # <div><img src="unsafe:javascript:alert('XSS')"></div>
 
 =======================================
-============= XSS Attacks =============
+=========== Reactive Forms ============
 =======================================
 
 Reactive Forms:
