@@ -51,7 +51,7 @@ Run this command to install the latest version of Tailwind CSS:
 
 # npx tailwind init
 
-Inside of tailwind.config.js:
+Then, inside of tailwind.config.js, add the following property:
 
 # content: ['./src/**/*.{html,ts}'],
 
