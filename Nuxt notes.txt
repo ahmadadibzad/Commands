@@ -1,0 +1,29 @@
+Auto Importing:
+
+In Nuxt, there is no need to write the `import ... from ...` command to use a component. Just use <MyComponent /> and Nuxt will automatically import it. You can find the import command in the path `.nutx/components.d.ts` created by Nuxt.
+In the case we have subfolders in the components folder, We should use the sub folder's name as the prefix when we want to call that component <SubFolderMyNestedComponent />
+For example, we have a /car subfolder, and inside of it we have a component named `List.vue`. We should call it this way: <CarList />. This is the default name created in the `components.d.ts` file.
+
+Dynamic paths:
+Set your page file like [MyPage].vue if you want to have a dynamic path. For example, to create the like `country/:country` path, we can create vue files in the /pages folder like this:
+
+/pages/country/[country].vue
+
+there we go! Your path is created.
+
+Optional path:
+
+If you want to have an optional path like `/country/:country/city/:city?`, you can create your files and folders like this:
+
+/pages/country/[country]/city/[[city]].vue
+
+Navigating to a route:
+Instead of `route.navigate()` in vue router, Nuxt provides another function to navigate to a specific route address:
+
+$ navigateTo('route path')
+
+-----------------------
+
+<NuxtPage />
+
+This means go ahead and render the page vue files in the current path and print them inside this <NuxtPage /> tag.
