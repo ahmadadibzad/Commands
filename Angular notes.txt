@@ -9,16 +9,24 @@ To update cli version:
 
 # ng new myApp
 
-We can use --routing flag when we want to include routing inside of the application:
+We can use the --routing flag when we want to include routing inside of the application:
 
 # ng new myApp --routing
 
 To run the application
 # ng serve
 
-or we can use npm command which defined in package.json file:
+or we can use the npm command which is defined in package.json file:
 
 # npm start
+
+To run the application in development mode:
+# ng serve
+or
+# npm start
+
+To run the application in production mode:
+# ng serve -c production   // -c means configuration
 
 
 ====================================
