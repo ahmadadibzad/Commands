@@ -10,11 +10,9 @@ To update cli version:
 # ng new myApp
 
 In Angular 17+ modules are optional by default, so if you want to include modules in your Angular 17+ application, you should use this command:
-
-#ng new myApp --standalone=false
+# ng new myApp --standalone=false
 
 We can use the --routing flag when we want to include routing inside of the application:
-
 # ng new myApp --routing
 
 To run the application
@@ -359,3 +357,26 @@ cardForm = new FormGroup({
 And we use `formControlName` property to bind an HTML field to our variable in the class:
 
 # <input type="text" class="input" formControlName="myField">
+
+=======================================
+============ Optimization =============
+=======================================
+
+"optimization": = true/false
+
+You can find this config in the angular.json. With this option, you can enable or disable script optimization. For example, if set to true, initial chunck file size will be reduced even by half.
+
+You can set it in:
+
+"architect": {
+        "build": {
+		"options": {
+			"optimization": false
+		}
+
+Or you can set it directly in production and development configurations:
+
+"configurations": {
+	"production": {
+		"optimization": false
+	}
