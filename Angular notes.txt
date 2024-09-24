@@ -358,6 +358,13 @@ And we use `formControlName` property to bind an HTML field to our variable in t
 
 # <input type="text" class="input" formControlName="myField">
 
+
+=======================================
+=============== PWA ===================
+=======================================
+
+# ng add @angular/pwa
+
 =======================================
 ============ Optimization =============
 =======================================
