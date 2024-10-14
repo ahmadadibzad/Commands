@@ -1,3 +1,6 @@
+To run a project:
+$ dotnet run
+
 EF Core:
 
 Migration:
