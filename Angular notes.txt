@@ -359,6 +359,25 @@ And we use `formControlName` property to bind an HTML field to our variable in t
 # <input type="text" class="input" formControlName="myField">
 
 
+====================================
+=========== Environments ===========
+====================================
+We can create an environment to define some base configs to use everywhere in our application. To create an environment, we can run this command:
+
+# ng generete environment [name]
+
+And a folder outside the src folder will be created. The file we have made should be like this:
+
+#
+export const environment = {
+    someConfig: 'some value'
+};
+#
+
+And then to use that variable in the application, we can simply use it like this:
+
+# myVar = environment.someConfig;
+
 =======================================
 =============== PWA ===================
 =======================================
