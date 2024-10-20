@@ -1,6 +1,36 @@
+To see information about .Net version installed:
+$ dotnet --info
+
 To run a project:
 $ dotnet run
 
+To create a new solution:
+$ dotnet new sln
+
+To create a new WebAPI project:
+$ dotnet new webapi -n <name>
+
+To create a new class library project:
+$ dotnet new classlib -n <name>
+
+To add a project to the solution:
+$ cd <Solution path>
+$ dotnet sln add <Path to csproj file of a project>
+
+To add a project reference to the project:
+$ cd <Project path>
+$ dotnet add reference <Path to csproj file of another project>
+
+To add a project reference from current project:
+$ dotnet remove reference <path to csproj file of another project>
+
+To restore all the dependencies of the sln
+$ dotnet restore
+
+To see the list of all the projects in a solution:
+$ dotnet sln list
+
+============================================
 EF Core:
 
 Migration:
