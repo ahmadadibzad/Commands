@@ -4,6 +4,10 @@ $ dotnet --info
 To run a project:
 $ dotnet run
 
+$ dotnet watch
+
+$ dotnet watch --no-hot-reload  // Does not use hot reload, but if we do make a change, it's going to automatically restart our app.
+
 To create a new solution:
 $ dotnet new sln
 
@@ -12,6 +16,9 @@ $ dotnet new webapi -n <name>
 
 To create a new class library project:
 $ dotnet new classlib -n <name>
+
+We can use -o configuration to output the project to a specific path:
+$ dotnet new webapi -o [path]
 
 To add a project to the solution:
 $ cd <Solution path>
@@ -50,4 +57,21 @@ $ Update-Database -Migration <migration name>
 To rollback all migrations:
 $ Update-Database 0
 
+-----------------------
+Using dotnet tool:
 
+To install dotnet tool:
+$ dotnet tool install --global dotnet-ef
+
+To update existing dotnet tool:
+$ dotnet tool update --global dotnet-ef
+
+To create a migration:
+$ dotnet ef migrations add [name]
+$ dotnet ef migrations add [name] -p [project]
+
+To update database:
+$ dotnet ef database update
+
+To drop existing database:
+$ dotnet ef database drop
