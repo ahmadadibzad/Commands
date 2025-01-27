@@ -44,9 +44,13 @@ Migration:
 
 To create a new migration:
 $ Add-Migration <name>
+or
+$ dotnet ef migrations add [migration name] -s [startup project name] -p [the project name that contains DbContext]
 
 To remove the latest migration:
 $ Remove-Migration
+or
+$ dotnet ef migrations remove
 
 To affecting the latest migration to the database:
 $ Update-Database
