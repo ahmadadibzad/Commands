@@ -50,7 +50,7 @@ $ dotnet ef migrations add [migration name] -s [startup project name] -p [the pr
 To remove the latest migration:
 $ Remove-Migration
 or
-$ dotnet ef migrations remove
+$ dotnet ef migrations remove [migration name] -s [startup project name] -p [the project name that contains DbContext]
 
 To affecting the latest migration to the database:
 $ Update-Database
